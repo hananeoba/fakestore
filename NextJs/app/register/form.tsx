@@ -1,9 +1,10 @@
 "use client"
 import { FormEvent, useState } from 'react';
 import { useRouter } from 'next/navigation'; 
-import { NextResponse } from 'next/server';
+import { toast } from 'react-toastify';
 
 export default function RegistrationForm() {
+  const router = useRouter();
   const [formData, setFormData] = useState({
     email: '',
     username: '',
@@ -19,7 +20,6 @@ export default function RegistrationForm() {
     phone: ''
   });
   const [error, setError] = useState('');
-  const router = useRouter();
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -33,12 +33,15 @@ export default function RegistrationForm() {
       });
 
       if (response.ok) {
+        toast.success('Registration Successful!');
         router.push('/login');
       } else {
+        toast.error('Registration failed');
         const data = await response.json();
         setError(data.message);
       }
     } catch (error) {
+      toast.error('Registration failed');
       console.error('Registration error:', error);
       setError('Registration failed');
     }
@@ -53,15 +56,15 @@ export default function RegistrationForm() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
+    <div className="min-h-screen flex items-center justify-center bg-light">
       <div className="bg-white p-8 rounded-md shadow-md w-full max-w-md">
-        <form onSubmit={handleSubmit} className="flex flex-col gap-2">
-          <h1 className="text-2xl font-semibold">Register</h1>
+        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+          <h1 className="text-2xl font-semibold text-center mb-4">Register</h1>
           <input
             value={formData.email}
             onChange={handleChange}
             name="email"
-            className="border border-gray-300 px-3 py-2 rounded-md"
+            className="border border-gray-300 px-3 py-2 rounded-md placeholder-gray-400 focus:outline-none focus:border-primary"
             type="email"
             placeholder="Email"
             required
@@ -70,7 +73,7 @@ export default function RegistrationForm() {
             value={formData.username}
             onChange={handleChange}
             name="username"
-            className="border border-gray-300 px-3 py-2 rounded-md"
+            className="border border-gray-300 px-3 py-2 rounded-md placeholder-gray-400 focus:outline-none focus:border-primary"
             type="text"
             placeholder="Username"
             required
@@ -79,7 +82,7 @@ export default function RegistrationForm() {
             value={formData.password}
             onChange={handleChange}
             name="password"
-            className="border border-gray-300 px-3 py-2 rounded-md"
+            className="border border-gray-300 px-3 py-2 rounded-md placeholder-gray-400 focus:outline-none focus:border-primary"
             type="password"
             placeholder="Password"
             required
@@ -89,7 +92,7 @@ export default function RegistrationForm() {
               value={formData.firstName}
               onChange={handleChange}
               name="firstName"
-              className="border border-gray-300 px-3 py-2 rounded-md "
+              className="border border-gray-300 px-3 py-2 rounded-md placeholder-gray-400 focus:outline-none focus:border-primary"
               type="text"
               placeholder="First Name"
               required
@@ -98,7 +101,7 @@ export default function RegistrationForm() {
               value={formData.lastName}
               onChange={handleChange}
               name="lastName"
-              className="border border-gray-300 px-3 py-2 rounded-md "
+              className="border border-gray-300 px-3 py-2 rounded-md placeholder-gray-400 focus:outline-none focus:border-primary"
               type="text"
               placeholder="Last Name"
               required
@@ -109,7 +112,7 @@ export default function RegistrationForm() {
               value={formData.city}
               onChange={handleChange}
               name="city"
-              className="border border-gray-300 px-3 py-2 rounded-md flex-grow"
+              className="border border-gray-300 px-3 py-2 rounded-md placeholder-gray-400 focus:outline-none focus:border-primary"
               type="text"
               placeholder="City"
               required
@@ -118,19 +121,18 @@ export default function RegistrationForm() {
               value={formData.street}
               onChange={handleChange}
               name="street"
-              className="border border-gray-300 px-3 py-2 rounded-md flex-grow"
+              className="border border-gray-300 px-3 py-2 rounded-md placeholder-gray-400 focus:outline-none focus:border-primary"
               type="text"
               placeholder="Street"
               required
             />
-            
           </div>
           <div className="grid grid-cols-2 gap-2">
-          <input
+            <input
               value={formData.number}
               onChange={handleChange}
               name="number"
-              className="border border-gray-300 px-3 py-2 rounded-md flex-grow"
+              className="border border-gray-300 px-3 py-2 rounded-md placeholder-gray-400 focus:outline-none focus:border-primary"
               type="text"
               placeholder="Number"
               required
@@ -139,19 +141,18 @@ export default function RegistrationForm() {
               value={formData.zipcode}
               onChange={handleChange}
               name="zipcode"
-              className="border border-gray-300 px-3 py-2 rounded-md flex-grow"
+              className="border border-gray-300 px-3 py-2 rounded-md placeholder-gray-400 focus:outline-none focus:border-primary"
               type="text"
               placeholder="Zipcode"
               required
             />
           </div>
           <div className="grid grid-cols-2 gap-2">
-            
             <input
               value={formData.lat}
               onChange={handleChange}
               name="lat"
-              className="border border-gray-300 px-3 py-2 rounded-md flex-grow"
+              className="border border-gray-300 px-3 py-2 rounded-md placeholder-gray-400 focus:outline-none focus:border-primary"
               type="text"
               placeholder="Latitude"
               required
@@ -160,7 +161,7 @@ export default function RegistrationForm() {
               value={formData.long}
               onChange={handleChange}
               name="long"
-              className="border border-gray-300 px-3 py-2 rounded-md flex-grow"
+              className="border border-gray-300 px-3 py-2 rounded-md placeholder-gray-400 focus:outline-none focus:border-primary"
               type="text"
               placeholder="Longitude"
               required
@@ -170,7 +171,7 @@ export default function RegistrationForm() {
             value={formData.phone}
             onChange={handleChange}
             name="phone"
-            className="border border-gray-300 px-3 py-2 rounded-md"
+            className="border border-gray-300 px-3 py-2 rounded-md placeholder-gray-400 focus:outline-none focus:border-primary"
             type="tel"
             placeholder="Phone"
             required
@@ -178,15 +179,15 @@ export default function RegistrationForm() {
           {error && <p className="text-red-500">{error}</p>}
           <button
             type="submit"
-            className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"
+            className="bg-secondary text-white px-4 py-2 rounded-md hover:bg-primary"
           >
             Register
           </button>
-
         </form>
         <p className="mt-4 text-gray-600 text-center">
-        Already have an account? <a href="/login" className="text-blue-500">Login</a>
-      </p>
+          Already have an account?{' '}
+          <a href="/login" className="text-secondary">Login</a>
+        </p>
       </div>
     </div>
   );
