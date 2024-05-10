@@ -1,14 +1,12 @@
 import React from "react";
 import { StyleSheet, View, Text, TouchableOpacity, Image, ScrollView } from "react-native";
-import { fonts } from "../utils/fonts";
 import { Icon } from "react-native-vector-icons/FontAwesome";
 
 const ProductCard = ({ items, handleProductClick }) => {
   return (
     <ScrollView>
         <View style={styles.container1}>
-      {items.map((item, index) => (
-
+      {items?.map((item, index) => (
         <TouchableOpacity
           key={index}
           style={styles.cardContainer}
@@ -45,15 +43,15 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   cardContainer: {
-    width: "44%", // Adjust as needed
+    width: "40%", // Adjust as needed
     margin: 10,
     borderRadius: 20,
     overflow: "hidden",
-    backgroundColor: "#fff", // Add a background color for better visibility
+    backgroundColor: "rgba(255,191,105,0.5)", // Add a background color for better visibility
   },
   coverImage: {
     height: 200, // Adjust as needed
-    width: "80%",
+    width: "75%",
     borderRadius: 20,
     resizeMode: "contain",
     alignSelf: "center",
@@ -62,14 +60,12 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   title: {
-    fontSize: 18,
-    fontFamily: fonts.regular,
+    fontSize: 17,
     fontWeight: "700",
     color: "#444444",
   },
   price: {
     fontSize: 18,
-    fontFamily: fonts.medium,
     fontWeight: "bold",
   },
 });

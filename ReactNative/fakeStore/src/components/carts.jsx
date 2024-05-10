@@ -1,6 +1,7 @@
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React from "react";
-import { fonts } from "../utils/fonts";
+
+import { Icon } from "react-native-vector-icons/Icon";
 
 const CartCard = ({ item, handleDelete }) => {
   const imageUrl =
@@ -21,10 +22,7 @@ const CartCard = ({ item, handleDelete }) => {
         </View>
       </View>
       <TouchableOpacity onPress={() => handleDelete(item.id)}>
-        <Image
-          source={require("../assets/deleteIcon.png")}
-          style={styles.deleteIcon}
-        />
+        <Icon name="trash" size={30} color="#FF0000" />
       </TouchableOpacity>
     </View>
   );
@@ -46,12 +44,12 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 18,
     fontWeight: "700",
-    fontFamily: fonts.medium,
+    
     color: "#444444",
   },
   price: {
     fontSize: 18,
-    fontFamily: fonts.medium,
+    
     color: "#797979",
     marginVertical: 7,
     fontWeight: "700",
@@ -77,7 +75,7 @@ const styles = StyleSheet.create({
   sizeText: {
     fontSize: 18,
     fontWeight: "700",
-    fontFamily: fonts.medium,
+    
   },
   textCircleContainer: {
     flexDirection: "row",
