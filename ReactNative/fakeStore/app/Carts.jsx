@@ -1,16 +1,14 @@
 import React from 'react';
 import { StyleSheet, View, Text } from 'react-native';
 
-const Index = () => {
+const Carts = () => {
     return (
         <View>
-        <Text>
-            Welcome to the fake store
-        </Text>
+            <Text>Carts</Text>
         </View>
     );
 }
 
 const styles = StyleSheet.create({})
 
-export default Index;
+export default Carts;

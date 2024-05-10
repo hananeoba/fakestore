@@ -1,21 +1,34 @@
-import { StyleSheet, Text, View } from "react-native";
-import {Link} from 'expo-router'
+import { Pressable, StyleSheet, Text, View } from "react-native";
+import { Link, router } from "expo-router";
+import { AuthProvider } from "../src/context/authContext";
 
-export default function Page() {
+export default function Page({ navigation }) {
   return (
     <View style={styles.container}>
       <View style={styles.main}>
         <Text style={styles.title}>Welcome to fakeStore</Text>
-        <Link href= '/Login'>
-          <Text style={styles.subtitle}>login</Text>
-        </Link> 
-        <Text style={styles.text}>or</Text>
-        <Link href='/SignUp'>
-          <Text style={styles.subtitle}>register</Text> 
-        </Link>     
+        <Pressable onPress={() => {
+            navigation.navigate("login");
+          }}>
+          <Text style={{
+            fontSize: 36,
+            color: "#ffbf69",
+          }}>Login</Text>
+        </Pressable>
+        <Text style={styles.subtitle}>or</Text>
+        <Pressable
+          onPress={() => {
+            navigation.navigate("signup");
+          }}
+          style={styles.button}
+        >
+          <Text style={{
+            fontSize: 36,
+            color: "#ffbf69",
+          }}>Register</Text>
+        </Pressable>
       </View>
     </View>
-
   );
 }
 

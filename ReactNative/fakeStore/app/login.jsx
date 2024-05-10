@@ -2,38 +2,12 @@ import React from "react";
 import { StyleSheet, TextInput, View, Text, Pressable } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { router, link, Link } from "expo-router";
-import GlobalStyle from "../../src/styles/GlobalStyle";
-const Login = () => {
-  const loginwithme = () => {
-    console.log("Login");
-    try {
-      fetch("https://fakestoreapi.com/auth/login", {
-        method: "POST",
-        body: JSON.stringify({
-          username: "mor_2314",
-          password: "83r5^_",
-        }),
-        headers: {
-          "Content-type": "application/json; charset=UTF-8",
-        },
-      })
-        .then((res) => res.json())
-        .then((json) => {
-          AsyncStorage.setItem("token", json.token);
-          console.log(json.token);
-          router.push({
-            pathname: "/(tabs)",
-            params: {
-              id: 1,
-            },
-          })
-          
-        }).catch((err) => { alert(`authentification error :your password or username are not correct ${err}`) });
-    } catch (err) {
-      alert(err);
-    }
-  };
+import GlobalStyle from "../src/styles/GlobalStyle";
+import { useContext } from "react";
+import { AuthContext } from "../src/context/authContext";
 
+const Login = ({ navigation }) => {
+  const { login } = useContext(AuthContext);
   return (
     <View style={GlobalStyle.container}>
       <Text style={GlobalStyle.title}>Welcome to fakeStore</Text>
@@ -56,13 +30,19 @@ const Login = () => {
 
       <Pressable
         onPress={() => {
-          loginwithme();
+          login();
         }}
         style={GlobalStyle.button}
       >
         <Text style={GlobalStyle.buttonText}>Login</Text>
       </Pressable>
-      <Link href="/SignUp"> not registered yet? Register here</Link>
+      <Pressable
+        onPress={() => {
+          navigation.navigate("/signup");
+        }}
+      >
+        <Text style={GlobalStyle.buttonText}>Register</Text>
+      </Pressable>
     </View>
   );
 };

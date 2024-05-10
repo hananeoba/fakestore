@@ -37,6 +37,10 @@ export default StyleSheet.create({
         color: "#38434D",
         marginBottom: 30,
     },
+    error:{
+        color:"red",
+        
+    },
     container: {
         backgroundColor: "#fff",
         flex: 2,
@@ -89,5 +93,17 @@ export default StyleSheet.create({
     },
     productButtonText: {
         color: "white",
+
+    },
+    categoryselector:{
+        backgroundColor: "#ffffff",
+        padding: 5,
+        margin:4,
+        height: 30,
+        width: "auto",
+        borderRadius:5,
+        alignItems: "space-between",
+        justifyContent: "center",
+        alignItems: "center",
     },
 });
