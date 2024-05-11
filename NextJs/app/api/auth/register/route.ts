@@ -3,7 +3,6 @@ import { NextResponse } from 'next/server';
 export async function POST(request: Request) {
   try {
     const { username, password } = await request.json();
-    // validate username and password
     console.log({ username, password });
 
     const response = await fetch('https://fakestoreapi.com/users', {
@@ -15,10 +14,8 @@ export async function POST(request: Request) {
     });
 
     if (response.ok) {
-      // Registration successful
       return NextResponse.json({ message: 'success' });
     } else {
-      // Registration failed
       return NextResponse.json({ message: 'error' }, { status: response.status });
     }
   } catch (e) {

@@ -2,7 +2,7 @@ import { Fragment, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useSession, signOut } from "next-auth/react";
-import { MenuIcon, XIcon, HomeIcon } from '@heroicons/react/outline';
+import { MenuIcon, XIcon, HomeIcon, ShoppingBagIcon } from '@heroicons/react/outline';
 import { toast } from 'react-toastify';
 
 const Navbar = () => {
@@ -20,7 +20,7 @@ const Navbar = () => {
       <div className="flex items-center">
         <div className="flex items-center flex-1 justify-between space-x-4">
           <Link href="/">
-            <span className="text-white text-lg font-bold">Your Logo</span>
+            <span className="text-white text-lg font-bold">Fake Store </span>
           </Link>
           <div className="lg:hidden self-start">
             <button
@@ -37,12 +37,18 @@ const Navbar = () => {
             <span>Home</span>
           </Link>
           {session ? (
+            <Fragment>
+              <Link href="/product" className={`flex items-center space-x-2 ${pathname === '/product' ? 'font-bold text-gray-600' : 'text-white'}`}>
+              <ShoppingBagIcon className="h-6 w-6" />
+              <span>Products</span>
+            </Link>
             <button
               onClick={handleLogout}
               className="text-white cursor-pointer"
             >
               Logout
             </button>
+            </Fragment>
           ) : (
             <Fragment>
               <Link href="/login">
@@ -63,9 +69,15 @@ const Navbar = () => {
               <span>Home</span>
             </Link>
             {session ? (
+              <>
+              <Link href="/product" className={`flex items-center space-x-2 ${pathname === '/product' ? 'font-bold text-gray-600' : 'text-white'}`}>
+              <ShoppingBagIcon className="h-6 w-6" />
+              <span>Products</span>
+            </Link>
               <button onClick={handleLogout} className="text-white">
                 Logout
               </button>
+              </>
             ) : (
               <Fragment>
                 <Link href="/login">

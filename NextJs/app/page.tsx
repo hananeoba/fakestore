@@ -1,5 +1,7 @@
 import Image from 'next/image'
 import { getServerSession } from 'next-auth';
+import Products from './components/Products';
+import HeroSection from './components/HeroSection';
 
 export default async function Home() {
   const session = await getServerSession();
@@ -8,8 +10,9 @@ export default async function Home() {
     console.log(session);
   }
   return (
-    <div>
-      <h1>Next.js + NextAuth.js</h1>
+    <div className="container mx-auto p-12">
+      <HeroSection />
+      <Products />
     </div>
   )
 }
