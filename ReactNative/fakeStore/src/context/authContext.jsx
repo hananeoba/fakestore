@@ -1,4 +1,4 @@
-import { router } from "expo-router";
+import { router, useNavigation } from "expo-router";
 import { useState, useEffect, createContext } from "react";
 
 import React from "react";
@@ -25,7 +25,7 @@ export const AuthProvider = ({ children }) => {
         setIsLoggedIn(false);
       }
     } catch (error) {
-      console.error("Error checking storage tokens:", error);
+      console.log("Error checking storage tokens:", error);
     }
   };
 
@@ -50,12 +50,6 @@ export const AuthProvider = ({ children }) => {
         .then((json) => {
           AsyncStorage.setItem("token", json.token);
           console.log(json.token);
-          router.navigate({
-            pathname: "/app",
-            params: {
-              id: 1,
-            },
-          });
           checkStorageToken();
         })
         .catch((err) => {

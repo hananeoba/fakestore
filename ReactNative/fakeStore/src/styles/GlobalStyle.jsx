@@ -2,9 +2,10 @@ import { StyleSheet } from "react-native";
 
 export default StyleSheet.create({
     input: {
-        //height: 50,
+        height: 40,
+        color: "#38434D",
         width: 311,
-       paddingTop:10,
+       //paddingTop:10,
         marginBottom:20,
         borderBottomWidth: 0.8,
         borderBottomColor: 'dim-gray',
@@ -39,10 +40,11 @@ export default StyleSheet.create({
     },
     error:{
         color:"red",
-        
+        fontSize: 16,
+        marginBottom: 10,
     },
     container: {
-        backgroundColor: "#fff",
+        backgroundColor: "",
         flex: 2,
         alignItems:"flex-start" ,
         marginTop:0,
@@ -107,3 +109,4 @@ export default StyleSheet.create({
         alignItems: "center",
     },
 });
+export const Orangecolor = "#ffbf69";

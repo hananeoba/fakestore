@@ -1,30 +1,68 @@
-import { useLocalSearchParams } from "expo-router";
-import React, { useContext } from "react";
-import { StyleSheet, View, Text, Pressable, Image } from "react-native";
-import { AuthContext } from "../src/context/authContext";
+import React from "react";
+import { StyleSheet, View, Text, Image, ScrollView } from "react-native";
+import Icon from "react-native-vector-icons/FontAwesome";
 
-const ProductId = ({ navigation, route }) => {
-  const { otherparams } = route.params;
-  const item = otherparams.item;
+const ProductId = ({ route }) => {
+  const { item } = route.params.otherparams;
+
   return (
     <View style={styles.container}>
-
-      <View style={styles.productContainer}>
-        <View style={styles.coverImage}>
-        <Image source={{ uri: item.image }} style={styles.coverImage} />
-        </View>
-        <View style={styles.detailsContainer}>
-          <Text style={styles.title}>{item.title}</Text>
-          <Text style={styles.description}>{item.description}</Text>
-          <Text style={styles.price}>Price: ${item.price}</Text>
-          <Text style={styles.category}>Category: {item.category}</Text>
+      <Image source={{ uri: item.image }} style={styles.coverImage} />
+      <View style={{ flex: 1 }}>
+        <ScrollView>
+          <View
+            style={{
+              padding: 15,
+              flexDirection: "row",
+              //flex: 1,
+              alignContent: "center",
+              justifyContent: "center",
+              marginHorizontal: 40,
+            }}
+          >
+            <Text style={styles.title}>{item.title}</Text>
+            <Text style={styles.price}>${item.price}</Text>
+          </View>
           <View style={styles.ratingContainer}>
-            <Text style={styles.ratingText}>Rating: </Text>
+            <Text style={styles.ratingText}>Rating:</Text>
             <Text style={styles.rating}>
               {item.rating.rate} ({item.rating.count} reviews)
             </Text>
           </View>
-        </View>
+          <View>
+            <Text
+              style={{
+                fontSize: 20,
+                fontWeight: "bold",
+                margin: 5,
+                padding: 2,
+              }}
+            >
+              about product :
+            </Text>
+            <Text style={styles.description}>{item.description}</Text>
+          </View>
+          <View
+            style={{
+              flexDirection: "row",
+              justifyContent: "space-between",
+              margin: 20,
+            }}
+          >
+            <View style={{ flexDirection: "column" }}>
+              <Icon name="edit" size={30} color="#ffbf69" />
+              <Text>edit</Text>
+            </View>
+            <View style={{ flexDirection: "column" }}>
+              <Icon name="shopping-cart" size={30} color="#ffbf69" />
+              <Text>add to carts</Text>
+            </View>
+            <View style={{ flexDirection: "column"  }}>
+              <Icon name="remove" size={30} color="#ffbf69" />
+              <Text>remove</Text>
+            </View>
+          </View>
+        </ScrollView>
       </View>
     </View>
   );
@@ -34,49 +72,56 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#F5F5F5",
-    padding: 10,
-  },
-  productId: {
-    fontSize: 16,
-    fontWeight: "bold",
-    marginBottom: 10,
   },
   productContainer: {
-    flexDirection: "row",
-    backgroundColor: "rgba(255,191,105,0.5)",
+    backgroundColor: "rgba(255, 191, 105, 1)",
     borderRadius: 10,
     overflow: "hidden",
     marginTop: 10,
     elevation: 2, // Add elevation for shadow on Android
   },
-  coverImage: {
-    padding:10,
-    width: 150,
-    height: 150,
-    resizeMode : "contain" ,
+  coverImageContainer: {
+    width: "auto",
     borderTopLeftRadius: 10,
     borderBottomLeftRadius: 10,
+    overflow: "hidden",
+    alignSelf: "center",
+  },
+  coverImage: {
+    justifyContent: "flex-start",
+    alignItems: "flex-start",
+    alignSelf: "flex-start",
+    width: "100%",
+    height: "45%",
+    resizeMode: "stretch",
+    borderColor: "rgba(0,0,0,0.5)",
+    borderRadius: 80,
   },
   detailsContainer: {
     flex: 1,
     padding: 10,
   },
   title: {
+    flexWrap: "wrap",
+    padding: 20,
     fontSize: 18,
     fontWeight: "bold",
+    fontWeight: "bold",
     marginBottom: 5,
-    color: "#333333",
+    color: "#rgba(255,191,105,0.8)",
   },
   description: {
     fontSize: 16,
-    marginBottom: 5,
+    marginHorizontal: 10,
+    justifyContent: "center",
     color: "#666666",
   },
   price: {
-    fontSize: 16,
+    fontSize: 24,
     fontWeight: "bold",
     marginBottom: 5,
-    color: "#333333",
+    padding: 20,
+    color: "rgba(255,191,105,1)",
   },
   category: {
     fontSize: 16,
@@ -88,6 +133,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   ratingText: {
+    marginHorizontal: 30,
     fontSize: 16,
     fontWeight: "bold",
     color: "#333333",
@@ -95,6 +141,7 @@ const styles = StyleSheet.create({
   rating: {
     fontSize: 16,
     color: "#666666",
+    marginHorizontal: 100,
   },
 });
 

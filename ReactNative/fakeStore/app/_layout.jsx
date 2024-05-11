@@ -8,9 +8,10 @@ import Nav from "./Nav";
 //const Drawer = createDrawerNavigator();
 const Layout = () => {
   return (
-    <AuthProvider>
+    
+      <AuthProvider>
         <Nav />
-    </AuthProvider>
+      </AuthProvider>
   );
 };
 

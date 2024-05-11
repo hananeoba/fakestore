@@ -13,6 +13,7 @@ import * as Font from 'expo-font';
 import GlobalStyle from "../src/styles/GlobalStyle";
 import { useContext, useEffect, useState } from "react";
 import { createStackNavigator } from "@react-navigation/stack";
+import { createDrawerNavigator } from "@react-navigation/drawer";
 
 import { AuthContext } from "../src/context/authContext";
 import axios from "axios";
@@ -21,8 +22,12 @@ import ProductId from "./ProductId";
 import { TextInput } from "react-native-gesture-handler";
 import Icon from "react-native-vector-icons/FontAwesome";
 import SearchBar from "../src/components/searchbar";
+import MyDrawer from "../src/components/CostumDrawer";
+import ModifyProducts from "./ModifyProducts";
+import Carts from "./Carts";
 
 const Stack = createStackNavigator();
+const Drawer= createDrawerNavigator();
 
 const Home = ({ navigation }) => {
   const { logout, isLoading, setIsLoading } = useContext(AuthContext);
@@ -60,25 +65,37 @@ const Home = ({ navigation }) => {
     };
     fetchCategory();
   }, []);
-
+const Drawer = createDrawerNavigator();
   return (
-    <Stack.Navigator>
-      <Stack.Screen name="Home" component={Home2} />
-      <Stack.Screen
-        name="ProductId"
-        component={ProductId}
-        initialParams={{
-          category: "men's clothing",
-          description:
-            "The color could be slightly different between on the screen and in practice. / Please note that body builds vary by person, therefore, detailed size information should be reviewed below on the product description.",
-          id: 4,
-          image: "https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg",
-          price: 15.99,
-          rating: { rate: 2.1, count: 430 },
-          title: "Mens Casual Slim Fit",
-        }}
-      />
-    </Stack.Navigator>
+  <>
+  <Drawer.Navigator initialRouteName="Home2" drawerContent={MyDrawer}>
+    <Drawer.Screen name="Home2" component={Home2} options={{
+      title: 'Home',
+    
+    }}/>
+    <Drawer.Screen name="ProductId" component={ProductId} />
+    <Drawer.Screen name="Carts" component={Carts} />
+    <Drawer.Screen name='ModifyProducts' component={ModifyProducts} />
+  </Drawer.Navigator>
+  </>
+
+    // <Stack.Navigator>
+    //   <Stack.Screen name="Home2" component={Home2} />
+    //   <Stack.Screen
+    //     name="ProductId"
+    //     component={ProductId}
+    //     initialParams={{
+    //       category: "men's clothing",
+    //       description:
+    //         "The color could be slightly different between on the screen and in practice. / Please note that body builds vary by person, therefore, detailed size information should be reviewed below on the product description.",
+    //       id: 4,
+    //       image: "https://fakestoreapi.com/img/71YXzeOuslL._AC_UY879_.jpg",
+    //       price: 15.99,
+    //       rating: { rate: 2.1, count: 430 },
+    //       title: "Mens Casual Slim Fit",
+    //     }}
+    //   />
+    // </Stack.Navigator>
   );
 };
 const Home2 = ({ navigation }) => {
@@ -93,7 +110,6 @@ const Home2 = ({ navigation }) => {
       .get(`https://fakestoreapi.com/products/category/${CategoryId}`)
       .then((res) => {
         setIsLoading(false);
-        //console.log(res.data);
         const raws= res.data.filter((raw)=>{
           if(search==""||null){
             return raw;
@@ -148,19 +164,10 @@ const Home2 = ({ navigation }) => {
     };
     fetchCategory();
   }, []);
-  useEffect(() => {
-    //fetchProductsbyCategory(CategoryId);
-  }, [CategoryId]);
 
   return (
     <>
     <SafeAreaView style={styles.container}>
-      {/* <View style={styles.header}>
-        <Text style={styles.headerText}></Text>
-        <Pressable onPress={logout} style={styles.logoutButton}>
-          <Text>Logout</Text>
-        </Pressable>
-      </View> */}
       <SearchBar setSearch={setSearch }onPress={fetchProduct} search={search}/>
       <View style={styles.categoryContainer}>
         <Text style={styles.categoryTitle}>Categories:</Text>
@@ -200,7 +207,6 @@ const Home2 = ({ navigation }) => {
             <ProductCard
               items={products}
               handleProductClick={(item) => {
-                console.log("item:", item);
                  navigation.navigate("ProductId", {
                   otherparams: {
                    item,

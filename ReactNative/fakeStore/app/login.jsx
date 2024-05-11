@@ -7,7 +7,7 @@ import { useContext } from "react";
 import { AuthContext } from "../src/context/authContext";
 
 const Login = ({ navigation }) => {
-  const { login } = useContext(AuthContext);
+    const {login} = useContext(AuthContext);
   return (
     <View style={GlobalStyle.container}>
       <Text style={GlobalStyle.title}>Welcome to fakeStore</Text>
@@ -36,12 +36,24 @@ const Login = ({ navigation }) => {
       >
         <Text style={GlobalStyle.buttonText}>Login</Text>
       </Pressable>
-      <Pressable
+      
+        <Text style={{
+          color: "black",
+          textAlign: "center",
+          marginTop: 20,
+          fontSize: 14,
+        }}>do not have accout yet  </Text>
+        <Pressable
         onPress={() => {
-          navigation.navigate("/signup");
+          navigation.navigate("signup");
         }}
       >
-        <Text style={GlobalStyle.buttonText}>Register</Text>
+      <Text style={{
+          color: "#ffc60c",
+          textAlign: "center",
+          marginTop: 20,
+          fontSize: 20,
+        }}>Register now</Text>
       </Pressable>
     </View>
   );
