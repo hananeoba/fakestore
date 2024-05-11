@@ -27,7 +27,7 @@ const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
 
 const Index = ({ navigation }) => {
-  const { logout, isLoading, setIsLoading } = useContext(AuthContext);
+  const { logout, login, isLoading, setIsLoading } = useContext(AuthContext);
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
   const [CategoryId, setCategoryId] = useState("");
@@ -94,16 +94,21 @@ const Index = ({ navigation }) => {
   useEffect(() => {
     //fetchProductsbyCategory(CategoryId);
   }, [CategoryId]);
-
+  useEffect(() => {});
   return (
     <>
       <SafeAreaView style={styles.container}>
-        {/* <View style={styles.header}>
-        <Text style={styles.headerText}></Text>
-        <Pressable onPress={logout} style={styles.logoutButton}>
-          <Text>Logout</Text>
-        </Pressable>
-      </View> */}
+        <View style={styles.header}>
+          <Text style={styles.headerText}>welcome to FakeStore </Text>
+          <Pressable
+            onPress={() => {
+              navigation.navigate("login");
+            }}
+            style={styles.logoutButton}
+          >
+            <Text>Login</Text>
+          </Pressable>
+        </View>
         <SearchBar
           setSearch={setSearch}
           onPress={fetchProduct}
@@ -143,7 +148,7 @@ const Index = ({ navigation }) => {
         </View>
         <View style={{ flex: 1 }}>
           <View style={styles.productContainer}>
-            <ScrollView contentContainerStyle={styles.scrollViewContent}>
+            <ScrollView style={styles.scrollViewContent}>
               <ProductCard
                 items={products}
                 handleProductClick={(item) => {
@@ -163,7 +168,7 @@ const Index = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop:50,
+    marginTop: 50,
     flex: 1,
     justifyContent: "space-between",
     alignItems: "center", // Center content horizontally

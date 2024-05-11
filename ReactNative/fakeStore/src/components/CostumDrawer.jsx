@@ -29,7 +29,7 @@ const MyDrawer = ({ navigation }, props) => {
             style={selected === "Home" ? styles.selectedBox : styles.button}
             onPress={() => {
               setSelected("Home");
-              navigation.navigate("Home2");
+              navigation.navigate("Home");
             }}
           >
             <View style={styles.icon}>

@@ -1,36 +1,54 @@
 import React from "react";
-import { StyleSheet, TextInput, View, Text, Pressable } from "react-native";
+import { StyleSheet, TextInput, View, Text, Pressable, Image } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { router, link, Link } from "expo-router";
 import GlobalStyle from "../src/styles/GlobalStyle";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../src/context/authContext";
 
 const Login = ({ navigation }) => {
     const {login} = useContext(AuthContext);
+    const [username, setUsername] = useState(""); 
+    const [password, setPassword] = useState("");
   return (
     <View style={GlobalStyle.container}>
-      <Text style={GlobalStyle.title}>Welcome to fakeStore</Text>
-
+    <View style={{
+      justifyContent: "center",
+    }}>
+    <View style={{
+      flexDirection: "row",
+      justifyContent: "center",
+      alignItems: "center",
+      marginBottom: 20,
+    }}>
+      <Text style={GlobalStyle.title}></Text>
+      <Image source={require("../src/assets/login.png")} style={
+        {
+          width: "100%",
+          height:200,
+        }
+      } />
+      </View> 
+</View>
       <Text style={GlobalStyle.subtitle}>Login</Text>
 
       <Text style={GlobalStyle.text}>User Name</Text>
       <TextInput
         placeholder="your_user_name"
-        onChangeText={(text) => console.log(text)}
+        onChangeText={(text) => setUsername(text)}
         style={GlobalStyle.input}
       />
       <Text style={GlobalStyle.text}>Password</Text>
       <TextInput
         placeholder="your_password"
         secureTextEntry={true}
-        onChangeText={(text) => console.log(text)}
+        onChangeText={(text) => setPassword(text)}
         style={GlobalStyle.input}
       />
 
       <Pressable
         onPress={() => {
-          login();
+          login(username,password);
         }}
         style={GlobalStyle.button}
       >

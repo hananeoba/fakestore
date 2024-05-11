@@ -39,8 +39,8 @@ export const AuthProvider = ({ children }) => {
       fetch("https://fakestoreapi.com/auth/login", {
         method: "POST",
         body: JSON.stringify({
-          username: "mor_2314",
-          password: "83r5^_",
+          username: user_name,
+          password: password,
         }),
         headers: {
           "Content-type": "application/json; charset=UTF-8",

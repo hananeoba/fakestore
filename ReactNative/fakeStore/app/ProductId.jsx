@@ -1,70 +1,137 @@
-import React from "react";
-import { StyleSheet, View, Text, Image, ScrollView } from "react-native";
+import React, { useContext, useState } from "react";
+import {
+  StyleSheet,
+  View,
+  Text,
+  Image,
+  ScrollView,
+  Pressable,
+  StatusBar,
+} from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
+import AuthContext from "../src/context/authContext";
+import ModifyModel from "../src/components/ModifyModel";
+import axios from "axios";
+import { SafeAreaView } from "react-native-safe-area-context";
 
-const ProductId = ({ route }) => {
+const ProductId = ({ route, navigation }) => {
   const { item } = route.params.otherparams;
+  const { isLoggedIn } = useContext(AuthContext);
+  const [modalVisible, setModalVisible] = useState(false);
+  const removeItem = (item) => {
+    axios
+      .delete(`https://fakestoreapi.com/products/${item.id}`)
+      .then((res) => {
+        alert("Product removed successfully");
+        navigation.navigate("MainHome");
+      })
+      .catch((err) => {
+        alert(`Error removing product: ${err}`);
+      });
+  };
 
   return (
-    <View style={styles.container}>
-      <Image source={{ uri: item.image }} style={styles.coverImage} />
-      <View style={{ flex: 1 }}>
-        <ScrollView>
-          <View
-            style={{
-              padding: 15,
-              flexDirection: "row",
-              //flex: 1,
-              alignContent: "center",
-              justifyContent: "center",
-              marginHorizontal: 40,
-            }}
-          >
-            <Text style={styles.title}>{item.title}</Text>
-            <Text style={styles.price}>${item.price}</Text>
-          </View>
-          <View style={styles.ratingContainer}>
-            <Text style={styles.ratingText}>Rating:</Text>
-            <Text style={styles.rating}>
-              {item.rating.rate} ({item.rating.count} reviews)
-            </Text>
-          </View>
-          <View>
-            <Text
+    <>
+      <StatusBar barStyle="dark-content" />
+      <SafeAreaView></SafeAreaView>
+      <View style={styles.container}>
+        <Image source={{ uri: item.image }} style={styles.coverImage} />
+        <View style={{ flex: 1 }}>
+          <ScrollView>
+            <View
               style={{
-                fontSize: 20,
-                fontWeight: "bold",
-                margin: 5,
-                padding: 2,
+                padding: 15,
+                flexDirection: "row",
+                //flex: 1,
+                alignContent: "center",
+                justifyContent: "center",
+                marginHorizontal: 40,
               }}
             >
-              about product :
-            </Text>
-            <Text style={styles.description}>{item.description}</Text>
-          </View>
-          <View
-            style={{
-              flexDirection: "row",
-              justifyContent: "space-between",
-              margin: 20,
-            }}
-          >
-            <View style={{ flexDirection: "column" }}>
-              <Icon name="edit" size={30} color="#ffbf69" />
-              <Text>edit</Text>
+              <Text style={styles.title}>{item.title}</Text>
+              <Text style={styles.price}>${item.price}</Text>
             </View>
-            <View style={{ flexDirection: "column" }}>
-              <Icon name="shopping-cart" size={30} color="#ffbf69" />
-              <Text>add to carts</Text>
+            <View style={styles.ratingContainer}>
+              <Text style={styles.ratingText}>Rating:</Text>
+              <Text style={styles.rating}>
+                {item.rating.rate} ({item.rating.count} reviews)
+              </Text>
             </View>
-            <View style={{ flexDirection: "column"  }}>
-              <Icon name="remove" size={30} color="#ffbf69" />
-              <Text>remove</Text>
+            <View>
+              <Text
+                style={{
+                  fontSize: 20,
+                  fontWeight: "bold",
+                  margin: 5,
+                  padding: 2,
+                }}
+              >
+                about product :
+              </Text>
+              <Text style={styles.description}>{item.description}</Text>
             </View>
-          </View>
-        </ScrollView>
+            <View
+              style={{
+                flexDirection: "row",
+                justifyContent: "space-between",
+                margin: 20,
+              }}
+            >
+              <Pressable
+                onPress={() => {
+                  if (isLoggedIn) {
+                    setModalVisible(true);
+                  } else {
+                    alert("Please login first");
+                    navigation.navigate("login");
+                  }
+                }}
+              >
+                <ModifyModel
+                  visible={modalVisible}
+                  setModalVisible={setModalVisible}
+                  productId={item.id}
+                />
+                <View style={{ flexDirection: "column" }}>
+                  <Icon name="edit" size={30} color="#ffbf69" />
+                  <Text>edit</Text>
+                </View>
+              </Pressable>
+              <Pressable
+                onPress={() => {
+                  if (isLoggedIn) {
+                    navigation.navigate("Carts");
+                  } else {
+                    alert("Please login first");
+                    navigation.navigate("login");
+                  }
+                }}
+              >
+                <View style={{ flexDirection: "column" }}>
+                  <Icon name="shopping-cart" size={30} color="#ffbf69" />
+                  <Text>add to carts</Text>
+                </View>
+              </Pressable>
+              <Pressable
+                onPress={() => {
+                  if (isLoggedIn) {
+                    removeItem(item);
+                  } else {
+                    alert("Please login first");
+                    navigation.navigate("login");
+                  }
+                }}
+              >
+                <View style={{ flexDirection: "column" }}>
+                  <Icon name="remove" size={30} color="#ffbf69" />
+                  <Text>remove</Text>
+                </View>
+              </Pressable>
+            </View>
+          </ScrollView>
+        </View>
       </View>
-    </View>
+    </>
   );
 };
 
