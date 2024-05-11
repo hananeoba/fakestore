@@ -94,8 +94,10 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     padding: 15,
-    backgroundColor: "lightblue",
+    backgroundColor: "#fff",
     borderRadius: 5,
+    borderColor: Orangecolor,
+    borderWidth: 1,
   },
   selectedBox: {
     flexDirection: "row",
@@ -103,13 +105,14 @@ const styles = StyleSheet.create({
     padding: 15,
     backgroundColor: Orangecolor,
     borderRadius: 5,
+    
   },
   icon: {
     marginRight: 10,
   },
   text: {
     fontSize: 16,
-    color: "#fff",
+    color: "#000",
     fontWeight: "bold",
   },
   selectedText: {
