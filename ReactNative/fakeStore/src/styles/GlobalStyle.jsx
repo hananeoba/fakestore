@@ -13,7 +13,6 @@ export default StyleSheet.create({
     button: {
         backgroundColor: "#ffbf69",
         padding: 10,
-        marginTop:30,
         height: 50,
         width: 311,
         borderRadius:10,
@@ -40,15 +39,16 @@ export default StyleSheet.create({
     },
     error:{
         color:"red",
-        fontSize: 16,
-        marginBottom: 10,
+        fontSize: 14,
+        margin: 5,
     },
     container: {
         backgroundColor: "",
         flex: 2,
         alignItems:"flex-start" ,
         marginTop:0,
-        padding: 24,
+        marginTop: 50,
+        marginLeft: 20,
     },
     main: {
         flex: 1,
@@ -59,6 +59,7 @@ export default StyleSheet.create({
     text: {
         fontSize: 16,
         height:17,
+        margin: 5,
         color: "#38434D",
     },
     image: {

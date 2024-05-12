@@ -68,7 +68,17 @@ const SignupForm = ({ navigation }) => {
         }) => (
           <ScrollView contentContainerStyle={{ paddingBottom: 20 }}>
             <TextInput
-              style={GlobalStyle.input}
+              style={[
+                GlobalStyle.input,
+                {
+                  width: 311,
+                  borderRadius: 10,
+                  borderColor: Orangecolor,
+                  borderWidth: 1,
+                  marginRight: 6,
+                  padding: 8,
+                },
+              ]}
               onChangeText={handleChange("email")}
               onBlur={handleBlur("email")}
               value={values.email}
@@ -79,7 +89,17 @@ const SignupForm = ({ navigation }) => {
             )}
 
             <TextInput
-              style={GlobalStyle.input}
+              style={[
+                GlobalStyle.input,
+                {
+                  width: 311,
+                  borderRadius: 10,
+                  borderColor: Orangecolor,
+                  borderWidth: 1,
+                  marginRight: 6,
+                  padding: 8,
+                },
+              ]}
               onChangeText={handleChange("username")}
               onBlur={handleBlur("username")}
               value={values.username}
@@ -90,7 +110,17 @@ const SignupForm = ({ navigation }) => {
             )}
 
             <TextInput
-              style={GlobalStyle.input}
+              style={[
+                GlobalStyle.input,
+                {
+                  width: 311,
+                  borderRadius: 10,
+                  borderColor: Orangecolor,
+                  borderWidth: 1,
+                  marginBottom: 6,
+                  padding: 8,
+                },
+              ]}
               onChangeText={handleChange("password")}
               onBlur={handleBlur("password")}
               value={values.password}
@@ -102,100 +132,227 @@ const SignupForm = ({ navigation }) => {
             )}
 
             <Text style={GlobalStyle.text}>Name:</Text>
-            <View style={{ flexDirection: "row" }}>
-              <TextInput
-                style={[GlobalStyle.input, { marginRight: 10 }]}
-                onChangeText={handleChange("name.firstname")}
-                onBlur={handleBlur("name.firstname")}
-                value={values.name.firstname}
-                placeholder="First name"
-              />
-              <TextInput
-                style={GlobalStyle.input}
-                onChangeText={handleChange("name.lastname")}
-                onBlur={handleBlur("name.lastname")}
-                value={values.name.lastname}
-                placeholder="Last name"
-              />
+            <View style={{ flexDirection: "row", alignItems: "space-between" }}>
+              <View
+                style={{ flexDirection: "column", alignItems: "space-between" }}
+              >
+                <TextInput
+                  style={[
+                    GlobalStyle.input,
+                    {
+                      width: 150,
+                      borderRadius: 10,
+                      borderColor: Orangecolor,
+                      borderWidth: 1,
+                      marginRight: 6,
+                      padding: 8,
+                    },
+                  ]}
+                  onChangeText={handleChange("name.firstname")}
+                  onBlur={handleBlur("name.firstname")}
+                  value={values.name.firstname}
+                  placeholder="First name"
+                />
+              </View>
+              <View
+                style={{ flexDirection: "column", alignItems: "space-between" }}
+              >
+                <TextInput
+                  style={[
+                    GlobalStyle.input,
+                    {
+                      width: 150,
+                      borderRadius: 10,
+                      borderColor: Orangecolor,
+                      borderWidth: 1,
+                      padding: 8,
+                    },
+                  ]}
+                  onChangeText={handleChange("name.lastname")}
+                  onBlur={handleBlur("name.lastname")}
+                  value={values.name.lastname}
+                  placeholder="Last name"
+                />
+                {(errors.name?.firstname || errors.name?.lastname) &&
+                  (touched.name?.firstname || touched.name?.lastname) && (
+                    <Text style={GlobalStyle.error}>
+                      {errors.name.firstname || errors.name.lastname}
+                    </Text>
+                  )}
+              </View>
             </View>
-            {(errors.name?.firstname || errors.name?.lastname) &&
-              (touched.name?.firstname || touched.name?.lastname) && (
-                <Text style={GlobalStyle.error}>
-                  {errors.name.firstname || errors.name.lastname}
-                </Text>
-              )}
 
             <Text style={GlobalStyle.text}>Address:</Text>
+            <View style={{ flexDirection: "row", alignItems: "space-between" }}>
+              <View
+                style={{ flexDirection: "column", alignItems: "space-between" }}
+              >
+                <TextInput
+                  style={[
+                    GlobalStyle.input,
+                    {
+                      width: 150,
+                      borderRadius: 10,
+                      borderColor: Orangecolor,
+                      borderWidth: 1,
+                      marginRight: 6,
+                      padding: 8,
+                    },
+                  ]}
+                  onChangeText={handleChange("address.city")}
+                  onBlur={handleBlur("address.city")}
+                  value={values.address.city}
+                  placeholder="City"
+                />
+                {errors.address?.city && touched.address?.city && (
+                  <Text style={GlobalStyle.error}>{errors.address.city}</Text>
+                )}
+              </View>
+              <View
+                style={{ flexDirection: "column", alignItems: "space-between" }}
+              >
+                <TextInput
+                  style={[
+                    GlobalStyle.input,
+                    {
+                      width: 150,
+                      borderRadius: 10,
+                      borderColor: Orangecolor,
+                      borderWidth: 1,
+                      padding: 8,
+                    },
+                  ]}
+                  onChangeText={handleChange("address.street")}
+                  onBlur={handleBlur("address.street")}
+                  value={values.address.street}
+                  placeholder="Street"
+                />
+                {errors.address?.street && touched.address?.street && (
+                  <Text style={GlobalStyle.error}>{errors.address.street}</Text>
+                )}
+              </View>
+            </View>
+            <View style={{ flexDirection: "row", alignItems: "space-between" }}>
+              <View
+                style={{ flexDirection: "column", alignItems: "space-between" }}
+              >
+                <TextInput
+                  style={[
+                    GlobalStyle.input,
+                    {
+                      width: 150,
+                      borderRadius: 10,
+                      borderColor: Orangecolor,
+                      borderWidth: 1,
+                      marginRight: 6,
+                      padding: 8,
+                    },
+                  ]}
+                  onChangeText={handleChange("address.number")}
+                  onBlur={handleBlur("address.number")}
+                  value={values.address.number}
+                  placeholder="Number"
+                  keyboardType="numeric"
+                />
+                {errors.address?.number && touched.address?.number && (
+                  <Text style={GlobalStyle.error}>{errors.address.number}</Text>
+                )}
+              </View>
+              <View
+                style={{ flexDirection: "column", alignItems: "space-between" }}
+              >
+                <TextInput
+                  style={[
+                    GlobalStyle.input,
+                    {
+                      width: 150,
+                      borderRadius: 10,
+                      borderColor: Orangecolor,
+                      borderWidth: 1,
+                      padding: 8,
+                    },
+                  ]}
+                  onChangeText={handleChange("address.zipcode")}
+                  onBlur={handleBlur("address.zipcode")}
+                  value={values.address.zipcode}
+                  placeholder="Zipcode"
+                  keyboardType="numeric"
+                />
+                {errors.address?.zipcode && touched.address?.zipcode && (
+                  <Text style={GlobalStyle.error}>
+                    {errors.address.zipcode}
+                  </Text>
+                )}
+              </View>
+            </View>
+            <Text style={GlobalStyle.text}>Geolocation:</Text>
+            <View style={{ flexDirection: "row", alignItems: "space-between" }}>
+              <View
+                style={{ flexDirection: "column", alignItems: "space-between" }}
+              >
+                <TextInput
+                  style={[
+                    GlobalStyle.input,
+                    {
+                      width: 150,
+                      borderRadius: 10,
+                      borderColor: Orangecolor,
+                      borderWidth: 1,
+                      marginRight: 6,
+                      padding: 8,
+                    },
+                  ]}
+                  onChangeText={handleChange("address.geolocation.lat")}
+                  onBlur={handleBlur("address.geolocation.lat")}
+                  value={values.address.geolocation.lat}
+                  placeholder="Latitude"
+                />
+                {errors.address?.geolocation?.lat &&
+                  touched.address?.geolocation?.lat && (
+                    <Text style={GlobalStyle.error}>
+                      {errors.address.geolocation.lat}
+                    </Text>
+                  )}
+              </View>
+              <View
+                style={{ flexDirection: "column", alignItems: "space-between" }}
+              >
+                <TextInput
+                  style={[
+                    GlobalStyle.input,
+                    {
+                      width: 150,
+                      borderRadius: 10,
+                      borderColor: Orangecolor,
+                      borderWidth: 1,
+                      padding: 8,
+                    },
+                  ]}
+                  onChangeText={handleChange("address.geolocation.long")}
+                  onBlur={handleBlur("address.geolocation.long")}
+                  value={values.address.geolocation.long}
+                  placeholder="Longitude"
+                />
+                {errors.address?.geolocation?.long &&
+                  touched.address?.geolocation?.long && (
+                    <Text style={GlobalStyle.error}>
+                      {errors.address.geolocation.long}
+                    </Text>
+                  )}
+              </View>
+            </View>
             <TextInput
-              style={GlobalStyle.input}
-              onChangeText={handleChange("address.city")}
-              onBlur={handleBlur("address.city")}
-              value={values.address.city}
-              placeholder="City"
-            />
-            {errors.address?.city && touched.address?.city && (
-              <Text style={GlobalStyle.error}>{errors.address.city}</Text>
-            )}
-            <TextInput
-              style={GlobalStyle.input}
-              onChangeText={handleChange("address.street")}
-              onBlur={handleBlur("address.street")}
-              value={values.address.street}
-              placeholder="Street"
-            />
-            {errors.address?.street && touched.address?.street && (
-              <Text style={GlobalStyle.error}>{errors.address.street}</Text>
-            )}
-            <TextInput
-              style={GlobalStyle.input}
-              onChangeText={handleChange("address.number")}
-              onBlur={handleBlur("address.number")}
-              value={values.address.number}
-              placeholder="Number"
-              keyboardType="numeric"
-            />
-            {errors.address?.number && touched.address?.number && (
-              <Text style={GlobalStyle.error}>{errors.address.number}</Text>
-            )}
-            <TextInput
-              style={GlobalStyle.input}
-              onChangeText={handleChange("address.zipcode")}
-              onBlur={handleBlur("address.zipcode")}
-              value={values.address.zipcode}
-              placeholder="Zipcode"
-              keyboardType="numeric"
-            />
-            {errors.address?.zipcode && touched.address?.zipcode && (
-              <Text style={GlobalStyle.error}>{errors.address.zipcode}</Text>
-            )}
-            <TextInput
-              style={GlobalStyle.input}
-              onChangeText={handleChange("address.geolocation.lat")}
-              onBlur={handleBlur("address.geolocation.lat")}
-              value={values.address.geolocation.lat}
-              placeholder="Latitude"
-            />
-            {errors.address?.geolocation?.lat &&
-              touched.address?.geolocation?.lat && (
-                <Text style={GlobalStyle.error}>
-                  {errors.address.geolocation.lat}
-                </Text>
-              )}
-            <TextInput
-              style={GlobalStyle.input}
-              onChangeText={handleChange("address.geolocation.long")}
-              onBlur={handleBlur("address.geolocation.long")}
-              value={values.address.geolocation.long}
-              placeholder="Longitude"
-            />
-            {errors.address?.geolocation?.long &&
-              touched.address?.geolocation?.long && (
-                <Text style={GlobalStyle.error}>
-                  {errors.address.geolocation.long}
-                </Text>
-              )}
-            <TextInput
-              style={GlobalStyle.input}
+              style={[
+                GlobalStyle.input,
+                {
+                  width: 311,
+                  borderRadius: 10,
+                  borderColor: Orangecolor,
+                  borderWidth: 1,
+                  marginRight: 6,
+                  padding: 8,
+                },
+              ]}
               onChangeText={handleChange("phone")}
               onBlur={handleBlur("phone")}
               value={values.phone}
@@ -208,13 +365,37 @@ const SignupForm = ({ navigation }) => {
             <Pressable style={GlobalStyle.button} onPress={handleSubmit}>
               <Text style={GlobalStyle.buttonText}>Sign Up</Text>
             </Pressable>
+            <View
+              style={{
+                flexDirection: "row",
+                justifyContent: "center",
+                margin: 20,
+              }}
+            >
+              <Text
+                style={{
+                  color: "black",
+                  textAlign: "center",
+                  fontSize: 20,
+                  paddingRight: 10,
+                }}
+              >
+                Already have an account?
+              </Text>
+              <Pressable onPress={() => navigation.navigate("login")}>
+                <Text
+                  style={{
+                    color: Orangecolor,
+                    fontSize: 20,
+                  }}
+                >
+                  Login
+                </Text>
+              </Pressable>
+            </View>
           </ScrollView>
         )}
       </Formik>
-      <Text style={GlobalStyle.text}>Already have an account?</Text>
-      <Pressable onPress={() => navigation.navigate("login")}>
-        <Text style={[GlobalStyle.text, { color: Orangecolor }]}>Login</Text>
-      </Pressable>
     </View>
   );
 };
