@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     textAlign: "center",
     marginBottom: 20,
-    color: "#fff", 
+    color: "#fff",
   },
   image: {
     width: "100%", // make image width responsive

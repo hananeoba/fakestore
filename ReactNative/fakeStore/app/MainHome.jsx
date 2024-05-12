@@ -175,7 +175,6 @@ const styles = StyleSheet.create({
     justifyContent: "space-arround",
     alignItems: "space-arround",
     backgroundColor: "#fff",
-
   },
   scrollViewContent: {
     flexGrow: 1,

@@ -2,7 +2,8 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Image from "next/image";
-import { useRouter } from 'next/navigation';
+import { useRouter } from "next/navigation";
+import { PlusIcon } from "@heroicons/react/outline";
 
 const Products: React.FC = () => {
   const [products, setProducts] = useState<any[]>([]);
@@ -85,10 +86,25 @@ const Products: React.FC = () => {
       setLoading(false);
     }
   };
+  const handleAdd = () => {
+    router.push(`/product/add`);
+  };
+  
 
   return (
     <div className="container mx-auto">
+      <div className="flex justify-between items-center ">
       <h1 className="text-3xl font-bold mt-8 mb-4">Products</h1>
+      <div
+          className="flex items-center py-1 px-2 border-secondary border rounded-md cursor-pointer shadow-lg bg-light"
+          onClick={handleAdd}
+        >
+          <PlusIcon className="cursor-pointer w-6 h-6 text-secondary" />
+          <p className="text-center text-sm pl-2">
+            <span className="text-gray-600">Add a new product</span>
+          </p>
+        </div>
+      </div>
       <div className="mb-4 flex flex-col md:flex-row justify-between items-center bg-light shadow-md border-secondary border p-1 px-3 rounded-md">
         <div className="flex flex-wrap gap-4 ">
           <button
@@ -130,7 +146,7 @@ const Products: React.FC = () => {
           {products.map((product) => (
             <div
               key={product.id}
-              className=" rounded-md p-4 bg-light border border-secondary flex flex-col justify-center items-center shadow-lg"
+              className=" rounded-md p-4 bg-light border border-secondary flex flex-col justify-center items-center shadow-lg cursor-pointer"
               onClick={() => handleProductClick(product.id)}
             >
               <Image

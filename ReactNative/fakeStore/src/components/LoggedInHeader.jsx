@@ -16,7 +16,7 @@ const LoggedInHeader = ({ addProduct }) => {
 const styles = StyleSheet.create({
   container: {
     //flex: 1,
-   // justifyContent: "center",
+    // justifyContent: "center",
     //alignItems: "center",
   },
   headerWrapper: {
@@ -24,11 +24,11 @@ const styles = StyleSheet.create({
   },
   header: {
     flexDirection: "row",
-   // paddingTop: 10,
+    // paddingTop: 10,
     paddingHorizontal: 20,
     justifyContent: "space-arround",
     alignItems: "center",
-    backgroundColor: "#fff", 
+    backgroundColor: "#fff",
   },
   headerText: {
     color: "#ffbc69",

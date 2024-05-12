@@ -2,14 +2,16 @@ import React from "react";
 import { StyleSheet, View, TextInput, Pressable } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
 
-const SearchBar = ({setSearch, onPress, search} ) => {
+const SearchBar = ({ setSearch, onPress, search }) => {
   return (
     <View style={styles.searchContainer}>
-        <Pressable onPress={()=>onPress(search)}>
-      <Icon name="search" size={20} color="#666" style={styles.searchIcon} />
-        </Pressable>
+      <Pressable onPress={() => onPress(search)}>
+        <Icon name="search" size={20} color="#666" style={styles.searchIcon} />
+      </Pressable>
       <TextInput
-        onChangeText={(text) => {setSearch(text)}}
+        onChangeText={(text) => {
+          setSearch(text);
+        }}
         placeholder="Search"
         style={styles.searchInput}
         placeholderTextColor="#999"

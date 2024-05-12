@@ -13,7 +13,7 @@ import AuthContext from "../context/authContext";
 import { Orangecolor } from "../styles/GlobalStyle";
 
 const Drawer = createDrawerNavigator();
-  
+
 const MyDrawer = ({ navigation }, props) => {
   const [selected, setSelected] = useState("null");
   const { logout, isLoggedIn } = useContext(AuthContext);
@@ -32,7 +32,11 @@ const MyDrawer = ({ navigation }, props) => {
             <View style={styles.icon}>
               <Icon name="home" size={20} />
             </View>
-            <Text style={selected === "Home" ? styles.selectedText : styles.text}>Home</Text>
+            <Text
+              style={selected === "Home" ? styles.selectedText : styles.text}
+            >
+              Home
+            </Text>
           </Pressable>
         </View>
         <View style={styles.item}>
@@ -46,7 +50,11 @@ const MyDrawer = ({ navigation }, props) => {
             <View style={styles.icon}>
               <Icon name="user" size={20} />
             </View>
-            <Text style={selected === "Profile" ? styles.selectedText : styles.text}>Profile</Text>
+            <Text
+              style={selected === "Profile" ? styles.selectedText : styles.text}
+            >
+              Profile
+            </Text>
           </Pressable>
         </View>
         <View style={styles.item}>
@@ -60,20 +68,28 @@ const MyDrawer = ({ navigation }, props) => {
             <View style={styles.icon}>
               <Icon name="shopping-cart" size={20} />
             </View>
-            <Text style={selected === "Cart" ? styles.selectedText : styles.text}>Cart</Text>
+            <Text
+              style={selected === "Cart" ? styles.selectedText : styles.text}
+            >
+              Cart
+            </Text>
           </Pressable>
         </View>
       </View>
       <View style={styles.logoutContainer}>
         <Pressable
           style={selected === "Logout" ? styles.selectedBox : styles.button}
-          onPress={()=>{
+          onPress={() => {
             logout();
           }}
         >
-            <Icon name="sign-out" size={20} />
-          
-          <Text style={selected === "Logout" ? styles.selectedText : styles.text}>Logout</Text>
+          <Icon name="sign-out" size={20} />
+
+          <Text
+            style={selected === "Logout" ? styles.selectedText : styles.text}
+          >
+            Logout
+          </Text>
         </Pressable>
       </View>
     </SafeAreaView>
@@ -104,7 +120,6 @@ const styles = StyleSheet.create({
     padding: 15,
     backgroundColor: Orangecolor,
     borderRadius: 5,
-    
   },
   icon: {
     marginRight: 10,
