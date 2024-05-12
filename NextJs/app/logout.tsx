@@ -2,7 +2,7 @@
 
 import { signOut } from 'next-auth/react';
 
-export default function Logout() {
+const Logout: React.FC = ()=> {
   return (
     <span
       onClick={() => {
@@ -13,3 +13,4 @@ export default function Logout() {
     </span>
   );
 }
+export default Logout;

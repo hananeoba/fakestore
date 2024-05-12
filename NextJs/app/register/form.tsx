@@ -3,7 +3,7 @@ import { FormEvent, useState } from 'react';
 import { useRouter } from 'next/navigation'; 
 import { toast } from 'react-toastify';
 
-export default function RegistrationForm() {
+const RegistrationForm: React.FC = ()=> {
   const router = useRouter();
   const [formData, setFormData] = useState({
     email: '',
@@ -192,3 +192,4 @@ export default function RegistrationForm() {
     </div>
   );
 }
+export default RegistrationForm;

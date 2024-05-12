@@ -11,7 +11,7 @@ import {
 } from "@heroicons/react/outline";
 import { toast } from "react-toastify";
 
-const Navbar = () => {
+const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { data: session } = useSession();
   const pathname = usePathname();

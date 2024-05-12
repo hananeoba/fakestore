@@ -1,11 +1,13 @@
-import { getServerSession } from 'next-auth';
-import Form from './form';
-import { redirect } from 'next/navigation';
+import React from "react";
+import { getServerSession } from "next-auth";
+import Form from "./form";
+import { redirect } from "next/navigation";
 
-export default async function RegisterPage() {
+const RegisterPage: React.FC = async () => {
   const session = await getServerSession();
   if (session) {
-    redirect('/');
+    redirect("/");
   }
   return <Form />;
-}
+};
+export default RegisterPage;

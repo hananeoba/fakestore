@@ -1,8 +1,8 @@
 import { getServerSession } from 'next-auth';
 import Form from './form';
 import { redirect } from 'next/navigation';
-
-export default async function LoginPage() {
+import React from 'react';
+const  LoginPage: React.FC = async() =>{
 
   const session = await getServerSession();
   if (session) {
@@ -11,3 +11,4 @@ export default async function LoginPage() {
 
   return <Form />;
 }
+export default LoginPage;

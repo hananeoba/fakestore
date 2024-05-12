@@ -1,9 +1,11 @@
+import React from 'react';
 import Products from '../components/Products';
 
-export default function Home() {
+const Home: React.FC = ()=> {
   return (
     <div className="container mx-auto p-12">
       <Products />
     </div>
   )
 }
+export default Home;

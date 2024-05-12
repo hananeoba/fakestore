@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import { FormEvent, useState } from 'react';
 import { toast } from 'react-toastify';
 
-export default function LoginForm() {
+const  LoginForm: React.FC = ()=> {
   const router = useRouter();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -75,3 +75,4 @@ export default function LoginForm() {
     </div>
   );
 }
+export default LoginForm;

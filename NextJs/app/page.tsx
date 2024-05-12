@@ -3,7 +3,7 @@ import { getServerSession } from 'next-auth';
 import Products from './components/Products';
 import HeroSection from './components/HeroSection';
 
-export default async function Home() {
+const Home: React.FC =async ()=> {
   const session = await getServerSession();
   if (session) {
     console.log('Hello, world!');
@@ -16,3 +16,4 @@ export default async function Home() {
     </div>
   )
 }
+export default Home;  

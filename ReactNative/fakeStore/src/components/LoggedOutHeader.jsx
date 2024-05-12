@@ -37,11 +37,14 @@ const styles = StyleSheet.create({
     color: "#ffbc69",
     fontSize: 24,
     fontWeight: "bold",
-    marginRight: 10,
+    paddingLeft: 20,
+    marginRight:10,
+    //marginLeft: 10,
   },
   loginButton: {
     flexDirection: "row",
-    justifyContent: "space-arround",
+    flex:1,
+    justifyContent: "center",
     alignItems: "center",
   },
 });

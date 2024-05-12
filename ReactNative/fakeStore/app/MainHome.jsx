@@ -8,6 +8,7 @@ import {
   ScrollView,
   StatusBar,
 } from "react-native";
+import Icon from "react-native-vector-icons/FontAwesome";
 
 //import Stat
 import { useContext, useEffect, useState } from "react";
@@ -29,6 +30,7 @@ const MainHome = ({ navigation }) => {
   const [categories, setCategories] = useState([]);
   const [CategoryId, setCategoryId] = useState("");
   const [search, setSearch] = useState("");
+  const [asc, setAsc] = useState("asc");
   const fetchProductsbyCategory = (CategoryId, search) => {
     setIsLoading(true);
     axios
@@ -49,10 +51,12 @@ const MainHome = ({ navigation }) => {
         alert(`Error fetching products: ${err}`);
       });
   };
-  const fetchProduct = async (search) => {
+  const fetchProduct = async (search, asc) => {
     setIsLoading(true);
     try {
-      const res = await axios.get("https://fakestoreapi.com/products");
+      const res = await axios.get(
+        `https://fakestoreapi.com/products?sort=${asc}`
+      );
       const raws = res.data.filter((raw) => {
         if (search == "" || null) {
           return raw;
@@ -68,12 +72,13 @@ const MainHome = ({ navigation }) => {
     }
   };
   useEffect(() => {
-    fetchProduct("");
+    fetchProduct("", asc);
   }, []);
 
   useEffect(() => {
     const fetchCategory = async () => {
       setIsLoading(true);
+
       try {
         const res = await axios.get(
           "https://fakestoreapi.com/products/categories"
@@ -105,11 +110,29 @@ const MainHome = ({ navigation }) => {
         </View>
         <ScrollView>
           <HeroSection />
-          <SearchBar
-            setSearch={setSearch}
-            onPress={fetchProduct}
-            search={search}
-          />
+          <View style={{ flexDirection: "row", alignItems: "center" }}>
+            <SearchBar
+              setSearch={setSearch}
+              onPress={fetchProduct}
+              search={search}
+            />
+            <Pressable
+              onPress={() => {
+                setAsc(asc === "asc" ? "desc" : "asc");
+                fetchProduct(search, asc);
+              }}
+              style={[
+                styles.categoryItem,
+                asc === "desc" && styles.categoryItemSelected,
+              ]}
+            >
+              <Icon
+                name="sort-amount-desc"
+                size={27}
+                color={'black'}
+              />
+            </Pressable>
+          </View>
           <View style={styles.categoryContainer}>
             <Text style={styles.categoryTitle}>Categories:</Text>
             <View style={styles.categories}>
@@ -193,7 +216,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   logoutButton: {
-    padding: 10,
+    margin: 10,
     backgroundColor: "lightgray",
     borderRadius: 5,
   },
