@@ -25,7 +25,7 @@ is a simulated online store web application where users can browse through a wid
   Navigate and discover the available products with ease.
   Filter and sort with precision: Refine your product search using filters and sorting options to find what you need quickly.
 - <b>Interact with products:</b> View detailed product information and engage with them by creating, retreiving, updating and deleting them when having autorization.
-  
+
 # 🛠Built With
 
 ## Technologies
@@ -41,13 +41,16 @@ This project was created with following technologies:
 
 ## Key Features
 
+- **Responsiveness**
 - **User Authentication and Authorization**
 - **Product Management**
   - **Product Search & Filtering**
+  - **Adding Product**
   - **Product Details**
   - **Product Editing**
+  - **Produc Delete**
 
-## 🚀 Demo
+# 🚀 Demo
 
 **Pages**
 
@@ -61,8 +64,6 @@ This project was created with following technologies:
   <image src = "https://i.imgur.com/EFJeG5P.jpg">
   <image src="https://i.imgur.com/V9td5Wv.jpg">
   <image src = "https://i.imgur.com/1immb5S.jpg">
-
-
 
 ## 💻 Getting Started
 
@@ -90,7 +91,6 @@ Clone this repository to your desired folder:
   git clone https://github.com/hananeoba/fakestore.git
 ```
 
-
 ### Usage
 
 To use this project
@@ -101,7 +101,9 @@ First, install depedencies:
 cd fakestore/NextJs
 npm install
 ```
-next : 
+
+next :
+
 ```bash
 npm run dev
 # or

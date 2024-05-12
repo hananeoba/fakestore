@@ -53,7 +53,7 @@ const AddProduct: React.FC = () => {
   };
 
   const handleCancel = () => {
-    router.push("/"); // Redirect back to home
+    router.push("/"); 
   };
 
   return (

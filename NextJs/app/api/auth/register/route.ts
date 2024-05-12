@@ -3,7 +3,6 @@ import { NextResponse } from 'next/server';
 export async function POST(request: Request) {
   try {
     const { username, password } = await request.json();
-    console.log({ username, password });
 
     const response = await fetch('https://fakestoreapi.com/users', {
       method: 'POST',

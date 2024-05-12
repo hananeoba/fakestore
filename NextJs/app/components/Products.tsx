@@ -11,6 +11,7 @@ const Products: React.FC = () => {
   const [categories, setCategories] = useState<string[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string>("");
   const [searchQuery, setSearchQuery] = useState<string>("");
+  const [sortOrder, setSortOrder] = useState<string>("asc");
 
   const router = useRouter();
   const handleProductClick = (productId: number) => {
@@ -19,7 +20,9 @@ const Products: React.FC = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("https://fakestoreapi.com/products");
+        const response = await axios.get(
+          `https://fakestoreapi.com/products?sort=${sortOrder}`
+        );
         setProducts(response.data);
         setLoading(false);
       } catch (error) {
@@ -41,7 +44,7 @@ const Products: React.FC = () => {
 
     fetchData();
     fetchCategories();
-  }, []);
+  }, [sortOrder]);
 
   const fetchProductsByCategory = async (category: string) => {
     try {
@@ -89,13 +92,18 @@ const Products: React.FC = () => {
   const handleAdd = () => {
     router.push(`/product/add`);
   };
-  
+
+  const handleSortOrderToggle = (order: string) => {
+    const newSortOrder = sortOrder === "asc" ? "desc" : "asc";
+    setSortOrder(newSortOrder);
+    fetchData();
+  };
 
   return (
     <div className="container mx-auto">
       <div className="flex justify-between items-center ">
-      <h1 className="text-3xl font-bold mt-8 mb-4">Products</h1>
-      <div
+        <h1 className="text-3xl font-bold mt-8 mb-4">Products</h1>
+        <div
           className="flex items-center py-1 px-2 border-secondary border rounded-md cursor-pointer shadow-lg bg-light"
           onClick={handleAdd}
         >
@@ -138,6 +146,48 @@ const Products: React.FC = () => {
           value={searchQuery}
           onChange={(e) => handleSearch(e.target.value)}
         />
+        <div className="flex flex-wrap gap-4 ">
+          <button
+            onClick={() => handleSortOrderToggle(sortOrder)}
+            className={`px-4 py-2 rounded-md text-gray-700 ${
+              sortOrder === "asc" || sortOrder === "desc"
+                ? "bg-primary "
+                : "bg-light"
+            }`}
+          >
+            {sortOrder === "asc" ? (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="w-6 h-6"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M3 4.5h14.25M3 9h9.75M3 13.5h5.25m5.25-.75L17.25 9m0 0L21 12.75M17.25 9v12"
+                />
+              </svg>
+            ) : (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="w-6 h-6"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M3 4.5h14.25M3 9h9.75M3 13.5h9.75m4.5-4.5v12m0 0-3.75-3.75M17.25 21 21 17.25"
+                />
+              </svg>
+            )}
+          </button>
+        </div>
       </div>
       {loading ? (
         <p>Loading...</p>
