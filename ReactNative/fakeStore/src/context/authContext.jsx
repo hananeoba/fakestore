@@ -3,6 +3,7 @@ import { useState, useEffect, createContext } from "react";
 
 import React from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import axios from "axios";
 import { ActivityIndicator, View } from "react-native";
 import GlobalStyle from "../styles/GlobalStyle";
 
@@ -36,29 +37,27 @@ export const AuthProvider = ({ children }) => {
   const login = (user_name, password) => {
     console.log("Login");
     try {
-      fetch("https://fakestoreapi.com/auth/login", {
+      axios("https://fakestoreapi.com/auth/login", {
         method: "POST",
-        body: JSON.stringify({
+        data: {
           username: user_name,
           password: password,
-        }),
+        },
         headers: {
           "Content-type": "application/json; charset=UTF-8",
         },
       })
-        .then((res) => res.json())
         .then((json) => {
-          AsyncStorage.setItem("token", json.token);
-          console.log(json.token);
+          AsyncStorage.setItem("token", json.data.token);
           checkStorageToken();
         })
         .catch((err) => {
-          alert(
-            `authentification error :your password or username are not correct ${err}`
-          );
+          if (err.response) {
+            alert(err.response.data);
+          }
         });
     } catch (err) {
-      alert(err);
+      return err;
     }
   };
   const register = ({ data }) => {

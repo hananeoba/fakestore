@@ -10,6 +10,7 @@ const Login = ({ navigation }) => {
     const {login} = useContext(AuthContext);
     const [username, setUsername] = useState(""); 
     const [password, setPassword] = useState("");
+    const [error, setError] = useState("");
   return (
     <View style={GlobalStyle.container}>
     <View style={{
@@ -45,10 +46,11 @@ const Login = ({ navigation }) => {
         onChangeText={(text) => setPassword(text)}
         style={GlobalStyle.input}
       />
-
+      {error? <Text style={GlobalStyle.error}>{error}</Text>: null}
       <Pressable
         onPress={() => {
           login(username,password);
+          
         }}
         style={GlobalStyle.button}
       >

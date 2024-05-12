@@ -159,7 +159,6 @@ const ModifyModel = ({ productId, visible, setModalVisible }) => {
               <Pressable
                 style={styles.button}
                 onPress={() => {
-                  formikProps.resetForm();
                   setModalVisible(false);
                 }}
               >

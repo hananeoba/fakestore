@@ -10,8 +10,7 @@ import AuthContext from "../src/context/authContext";
 
 import ProductId from "./ProductId";
 import Home from "./Home";
-import Carts from "./Carts";
-import Index from "./Index";
+
 import MainHome from "./MainHome";
 
 const Stack = createStackNavigator();
@@ -34,20 +33,6 @@ const Nav = () => {
           <Stack.Screen
             name="Home"
             component={Home}
-            options={{
-              headerShown: false,
-            }}
-          />
-          <Stack.Screen
-            name="ProductId"
-            component={ProductId}
-            options={{
-              headerShown: false,
-            }}
-          />
-          <Stack.Screen
-            name="Carts"
-            component={Carts}
             options={{
               headerShown: false,
             }}

@@ -89,17 +89,20 @@ const MainHome = ({ navigation }) => {
   }, []);
 
   return (
-    <>
-    <StatusBar barStyle="dark-content" />
+    <View style={{ flex: 1 }}>
+      <StatusBar barStyle="dark-content" />
       <SafeAreaView style={styles.container}>
-      {isLoggedIn ? (
-        <LoggedInHeader addProduct={
-          ()=>navigation.navigate('addProduct')
-        
-        } />
-      ) : (
-        <LoggedOutHeader navigateToLogin={()=>navigation.navigate('login')}/>
-      )}
+        <View>
+          {isLoggedIn ? (
+            <LoggedInHeader
+              addProduct={() => navigation.navigate("addProduct")}
+            />
+          ) : (
+            <LoggedOutHeader
+              navigateToLogin={() => navigation.navigate("login")}
+            />
+          )}
+        </View>
         <ScrollView>
           <HeroSection />
           <SearchBar
@@ -159,18 +162,20 @@ const MainHome = ({ navigation }) => {
           </View>
         </ScrollView>
       </SafeAreaView>
-    </>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    display: "flex",
-    paddingTop:34,
+    //display: "flex",
+    //flexDirection: "column",
+    //paddingTop: 34,
     flex: 1,
-    justifyContent: "space-between",
-    alignItems: "space-between",
+    justifyContent: "space-arround",
+    alignItems: "space-arround",
     backgroundColor: "#fff",
+
   },
   scrollViewContent: {
     flexGrow: 1,
@@ -182,6 +187,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     justifyContent: "flex-start",
     alignItems: "flex-start",
+    backgroundColor: "#f0f0f0",
   },
   headerText: {
     fontSize: 24,

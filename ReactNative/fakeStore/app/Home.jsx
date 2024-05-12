@@ -1,6 +1,4 @@
 import React from "react";
-import { StyleSheet } from "react-native";
-
 import { useContext, useEffect, useState } from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createDrawerNavigator } from "@react-navigation/drawer";
@@ -12,14 +10,16 @@ import ProductId from "./ProductId";
 
 import MyDrawer from "../src/components/CostumDrawer";
 
-import Carts from "./Carts";
+import Cart from "./Cart";
 import MainHome from "./MainHome";
+import AddProduct from "./addProduct";
+import Profile from "./Profile";
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
 
 const Home = ({ navigation }) => {
-  const { logout, isLoading, setIsLoading } = useContext(AuthContext);
+  const { setIsLoading } = useContext(AuthContext);
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
 
@@ -57,11 +57,7 @@ const Home = ({ navigation }) => {
   const Drawer = createDrawerNavigator();
   return (
     <>
-      <Drawer.Navigator initialRouteName="Home2" drawerContent={MyDrawer}>
-        {/*<Drawer.Screen name="Home2" component={Home2} options={{
-      title: 'Home',
-    
-    }}/>*/}
+      <Drawer.Navigator initialRouteName="MainHome" drawerContent={MyDrawer}>
         <Drawer.Screen
           name="MainHome"
           component={MainHome}
@@ -70,69 +66,12 @@ const Home = ({ navigation }) => {
           }}
         />
         <Drawer.Screen name="ProductId" component={ProductId} />
-        <Drawer.Screen name="Carts" component={Carts} />
+        <Drawer.Screen name="addProduct" component={AddProduct} />
+        <Drawer.Screen name="Cart" component={Cart} />
+        <Drawer.Screen name="Profile" component={Profile} />
       </Drawer.Navigator>
     </>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    display: "flex",
-    flex: 1,
-    justifyContent: "space-between",
-    alignItems: "space-between",
-    backgroundColor: "#fff",
-  },
-  scrollViewContent: {
-    flexGrow: 1,
-    paddingHorizontal: 10,
-  },
-  header: {
-    flexDirection: "row",
-    paddingTop: 10,
-    paddingHorizontal: 20,
-    justifyContent: "flex-start",
-    alignItems: "flex-start",
-  },
-  headerText: {
-    fontSize: 24,
-    fontWeight: "bold",
-  },
-  logoutButton: {
-    padding: 10,
-    backgroundColor: "lightgray",
-    borderRadius: 5,
-  },
-  categoryContainer: {
-    padding: 20,
-  },
-  categoryTitle: {
-    fontSize: 18,
-    marginBottom: 10,
-  },
-  categories: {
-    flexDirection: "row",
-    flexWrap: "wrap",
-  },
-  categoryItem: {
-    marginRight: 10,
-    marginBottom: 10,
-    paddingVertical: 5,
-    paddingHorizontal: 10,
-    backgroundColor: "#f0f0f0",
-    borderRadius: 5,
-  },
-  categoryItemSelected: {
-    backgroundColor: "rgb(255,191,105)", // Change to your desired highlight color
-  },
-  categoryText: {
-    fontSize: 16,
-  },
-  productContainer: {
-    flex: 1,
-    //backgroundColor: "#f0f0f0",
-  },
-});
 
 export default Home;

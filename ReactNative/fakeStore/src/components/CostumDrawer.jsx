@@ -17,9 +17,6 @@ const Drawer = createDrawerNavigator();
 const MyDrawer = ({ navigation }, props) => {
   const [selected, setSelected] = useState("null");
   const { logout, isLoggedIn } = useContext(AuthContext);
-  const pressLogout = () => {
-    logout();
-  };
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
@@ -29,7 +26,7 @@ const MyDrawer = ({ navigation }, props) => {
             style={selected === "Home" ? styles.selectedBox : styles.button}
             onPress={() => {
               setSelected("Home");
-              navigation.navigate("Home");
+              navigation.navigate("MainHome");
             }}
           >
             <View style={styles.icon}>
@@ -43,7 +40,7 @@ const MyDrawer = ({ navigation }, props) => {
             style={selected === "Profile" ? styles.selectedBox : styles.button}
             onPress={() => {
               setSelected("Profile");
-              navigation.navigate("profile");
+              navigation.navigate("Profile");
             }}
           >
             <View style={styles.icon}>
@@ -57,7 +54,7 @@ const MyDrawer = ({ navigation }, props) => {
             style={selected === "Cart" ? styles.selectedBox : styles.button}
             onPress={() => {
               setSelected("Cart");
-              navigation.navigate("Carts");
+              navigation.navigate("Cart");
             }}
           >
             <View style={styles.icon}>
@@ -70,11 +67,12 @@ const MyDrawer = ({ navigation }, props) => {
       <View style={styles.logoutContainer}>
         <Pressable
           style={selected === "Logout" ? styles.selectedBox : styles.button}
-          onPress={pressLogout}
+          onPress={()=>{
+            logout();
+          }}
         >
-          <View style={styles.icon}>
             <Icon name="sign-out" size={20} />
-          </View>
+          
           <Text style={selected === "Logout" ? styles.selectedText : styles.text}>Logout</Text>
         </Pressable>
       </View>
@@ -86,6 +84,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
+    marginTop: 20,
   },
   item: {
     marginBottom: 20,
