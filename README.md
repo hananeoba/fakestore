@@ -37,11 +37,14 @@ This project was created with following technologies:
 
 ## Key Features
 
+- **Responsiveness**
 - **User Authentication and Authorization**
 - **Product Management**
   - **Product Search & Filtering**
+  - **Adding Product**
   - **Product Details**
   - **Product Editing**
+  - **Produc Delete**
 
 ## 💻 Getting Started
 
