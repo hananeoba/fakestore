@@ -15,8 +15,6 @@ export const AuthProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  // Define an async function to update the token
-
   const checkStorageToken = async () => {
     try {
       const access = await AsyncStorage.getItem("token");
@@ -35,7 +33,6 @@ export const AuthProvider = ({ children }) => {
   }, []);
 
   const login = (user_name, password) => {
-    console.log("Login");
     try {
       axios("https://fakestoreapi.com/auth/login", {
         method: "POST",
@@ -60,29 +57,6 @@ export const AuthProvider = ({ children }) => {
       return err;
     }
   };
-  const register = ({ data }) => {
-    try {
-      fetch("https://fakestoreapi.com/auth/register", {
-        method: "POST",
-        body: JSON.stringify(data),
-        headers: {
-          "Content-type": "application/json; charset=UTF-8",
-        },
-      })
-        .then((res) => res.json())
-        .then((json) => {
-          console.log(json);
-        })
-        .catch((err) => {
-          alert(
-            `authentification error :your password or username are not correct ${err}`
-          );
-        });
-    } catch (err) {
-      alert(err);
-    }
-  };
-
   const logout = async () => {
     AsyncStorage.removeItem("token");
     alert("You are logged out");

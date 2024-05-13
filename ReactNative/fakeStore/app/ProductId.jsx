@@ -42,7 +42,6 @@ const ProductId = ({ route, navigation }) => {
               style={{
                 padding: 15,
                 flexDirection: "row",
-                //flex: 1,
                 alignContent: "center",
                 justifyContent: "center",
                 marginHorizontal: 40,
@@ -145,7 +144,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     overflow: "hidden",
     marginTop: 10,
-    elevation: 2, // Add elevation for shadow on Android
+    elevation: 2,
   },
   coverImageContainer: {
     width: "auto",

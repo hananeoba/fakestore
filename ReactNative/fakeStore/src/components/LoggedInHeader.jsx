@@ -15,16 +15,12 @@ const LoggedInHeader = ({ addProduct }) => {
 
 const styles = StyleSheet.create({
   container: {
-    //flex: 1,
-    // justifyContent: "center",
-    //alignItems: "center",
   },
   headerWrapper: {
-    width: "80%", // Adjust the width as needed
+    width: "80%",
   },
   header: {
     flexDirection: "row",
-    // paddingTop: 10,
     paddingHorizontal: 20,
     justifyContent: "space-arround",
     alignItems: "center",

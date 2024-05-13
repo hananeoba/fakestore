@@ -43,9 +43,9 @@ const styles = StyleSheet.create({
     color: "#fff",
   },
   image: {
-    width: "100%", // make image width responsive
-    height: 400, // adjust height as needed
-    borderRadius: 8, // apply border radius to the image
+    width: "100%",
+    height: 400, 
+    borderRadius: 8,
   },
 });
 

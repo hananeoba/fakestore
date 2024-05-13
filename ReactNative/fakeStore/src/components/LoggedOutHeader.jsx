@@ -17,14 +17,13 @@ const LoggedOutHeader = ({ navigateToLogin }) => {
 
 const styles = StyleSheet.create({
   container: {
-    //flex: 1,
     marginTop: 40,
     paddingHorizontal: 20,
     justifyContent: "flex-start",
     alignItems: "flex-start",
   },
   headerWrapper: {
-    width: "80%", // Adjust the width as needed
+    width: "80%",
   },
   header: {
     flexDirection: "row",
@@ -39,7 +38,6 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     paddingLeft: 20,
     marginRight:10,
-    //marginLeft: 10,
   },
   loginButton: {
     flexDirection: "row",

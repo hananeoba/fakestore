@@ -4,6 +4,7 @@ import { Formik } from "formik";
 import * as yup from "yup";
 import { TextInput } from "react-native";
 import axios from "axios";
+import GlobalStyle, { Orangecolor } from "../styles/GlobalStyle";
 
 const ModifyModel = ({ productId, visible, setModalVisible }) => {
   const [product, setProduct] = useState(null);
@@ -18,11 +19,9 @@ const ModifyModel = ({ productId, visible, setModalVisible }) => {
     };
     try {
       fetchProductByID(productId, setProduct);
-      //console.log(product);
     } catch (err) {
       console.log(err);
     }
-    //fetchProductByID(productId);
   }, []);
   const onSubmit = (values) => {
     axios(`https://fakestoreapi.com/products/${productId}`, {
@@ -39,11 +38,11 @@ const ModifyModel = ({ productId, visible, setModalVisible }) => {
     title: product ? product.title : "title",
     description: product ? product.description : "description",
     image: product ? product.image : "image",
-    price: product ? product.price : "price",
+    price: product ? product.price.toString() : "0$",
     category: product ? product.category : "category",
     rating: {
-      rate: product ? product.rating.rate : "0",
-      count: product ? product.rating.count : "0",
+      rate: product ? product.rating.rate.toString() : "0",
+      count: product ? product.rating.count.toString() : "0",
     },
   };
   const validationSchema = yup.object({
@@ -83,17 +82,18 @@ const ModifyModel = ({ productId, visible, setModalVisible }) => {
                 <TextInput
                   placeholder="title"
                   value={formikProps.values.title}
+                  style={GlobalStyle.input}
                   onChangeText={formikProps.handleChange("title")}
                 />
                 {formikProps.errors.title && formikProps.touched.title ? (
                   <Text>{formikProps.errors.title}</Text>
                 ) : null}
               </View>
-              {/* Other input fields */}
               <View>
                 <Text>Description</Text>
                 <TextInput
                   placeholder="description"
+                  style={GlobalStyle.input}
                   value={formikProps.values.description}
                   onChangeText={formikProps.handleChange("description")}
                 />
@@ -105,6 +105,7 @@ const ModifyModel = ({ productId, visible, setModalVisible }) => {
               <View>
                 <Text>Image</Text>
                 <TextInput
+                  style={GlobalStyle.input}
                   placeholder="your image url"
                   value={formikProps.values.image}
                   onChangeText={formikProps.handleChange("image")}
@@ -117,6 +118,7 @@ const ModifyModel = ({ productId, visible, setModalVisible }) => {
                 <Text>Price</Text>
                 <TextInput
                   placeholder="price"
+                  style={GlobalStyle.input}
                   value={formikProps.values.price}
                   onChangeText={formikProps.handleChange("price")}
                 />
@@ -128,6 +130,7 @@ const ModifyModel = ({ productId, visible, setModalVisible }) => {
                 <Text>rate</Text>
                 <TextInput
                   placeholder="rate"
+                  style={GlobalStyle.input}
                   initialValue={formikProps.values.rating.rate}
                   value={formikProps.values.rating.rate}
                   onChangeText={formikProps.handleChange("rating.rate")}
@@ -143,6 +146,7 @@ const ModifyModel = ({ productId, visible, setModalVisible }) => {
               <View>
                 <Text>count</Text>
                 <TextInput
+                  style={GlobalStyle.input}
                   placeholder="count"
                   value={formikProps.values.rating.count}
                   onChangeText={formikProps.handleChange("rating.count")}
@@ -189,10 +193,12 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   modalContent: {
-    backgroundColor: "#fefe",
+    backgroundColor: 'white',
     width: "100%",
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
+    borderWidth: 3,
+    borderColor: Orangecolor,
     padding: 20,
   },
   modalTitle: {
@@ -204,7 +210,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   button: {
-    backgroundColor: "#ccc",
+    backgroundColor: Orangecolor,
     padding: 10,
     borderRadius: 5,
     alignItems: "center",

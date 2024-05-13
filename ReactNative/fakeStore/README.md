@@ -1,5 +1,7 @@
 # Welcome to your Expo app 👋
+
 This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+
 # Fake Store App
 
 # 📗 Table of Contents
@@ -18,7 +20,7 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
 - [🙏 Acknowledgements](#-acknowledgements)
 - [📝 License](#-license)
 
-# 📖 Fake Store Next
+# 📖 Fake Store React Native
 
 **FakeStore mobile app**
 is a simulated online store mobile application where users can browse through a wide variety of products. The application empowers users to:
@@ -27,7 +29,7 @@ is a simulated online store mobile application where users can browse through a 
   Navigate and discover the available products with ease.
   Filter and sort with precision: Refine your product search using filters and sorting options to find what you need quickly.
 - <b>Interact with products:</b> View detailed product information and engage with them by creating, retreiving, updating and deleting them when having autorization.
-  
+
 # 🛠Built With
 
 ## Technologies
@@ -35,9 +37,10 @@ is a simulated online store mobile application where users can browse through a 
 This project was created with following technologies:
 
 - [React Native](https://reactnative.dev/)
+
   - [React Context](https://legacy.reactjs.org/docs/context.html)
   - [React Navigation](https://reactnavigation.org/)
-
+- [axios](https://axios-http.com/docs/intro)
 - [FakeStoreAPI](https://fakestoreapi.com/)
 
 ## Key Features
@@ -45,31 +48,23 @@ This project was created with following technologies:
 - **User Authentication and Authorization**
 - **Product Management**
   - **Product Search & Filtering**
+  - **Adding Product**
   - **Product Details**
   - **Product Editing**
+  - **Produc Delete**
 
 ## 🚀 Demo
 
 **Screens**
-
-<image src= "https://i.imgur.com/fRbrOIl.jpg">
-<image src = "https://i.imgur.com/rvcYTRa.jpg">
-<image src = "https://i.imgur.com/q18Ye9M.jpg">
-
-**For LoggedIn Users**
-
-  <image src= "https://i.imgur.com/ut6VAax.jpg" >
-  <image src = "https://i.imgur.com/EFJeG5P.jpg">
-  <image src="https://i.imgur.com/V9td5Wv.jpg">
-  <image src = "https://i.imgur.com/1immb5S.jpg">
+<image src="https://i.imgur.com/Mjjerzs.png">
+<image src="https://i.imgur.com/IS4iu7s.png">
 
 
-
-## 💻 Getting Started
+# 💻 Getting Started
 
 To get a local copy up and running, follow these steps.
 
-### Prerequisites
+## Prerequisites
 
 In order to run this project you need:
 
@@ -80,7 +75,7 @@ In order to run this project you need:
 - A code editor like Visual Studio Code
 - Any other tool you can think about
 
-### Setup
+## Setup
 
 if you have already the global fakestore folder ignore this :
 
@@ -94,8 +89,7 @@ Clone this repository to your desired folder:
 
 ```
 
-
-### Usage
+## Usage
 
 To use this project
 
@@ -119,51 +113,47 @@ In the output, you'll find options to open the app in a
 - [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
 - [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
 
-
-<p align="right">(<a href="#📗-table-of-contents">back to top</a>)</p>
+<p align="right">(<a href="#-table-of-contents">back to top</a>)</p>
 
 <!-- FUTURE FEATURES -->
 
-## 🔭 Future Features
+# 🔭 Future Features
 
 - Adding product to cart
 - Adding User Profile
 
-<p align="right">(<a href="#📗-table-of-contents">back to top</a>)</p>
+<p align="right">(<a href="#-table-of-contents">back to top</a>)</p>
 <!-- Author -->
 
-## 👥 Author <a name="authors"></a>
+# 👥 Author <a name="authors"></a>
 
 👤 **Hanane OULD BABA ALI**
 
 - GitHub: [@hananeoba](https://github.com/hananeoba)
 - LinkedIn: [hananeoba](https://linkedin.com/in/hanane-ouldbabaali/)
 
-<p align="right">(<a href="#📗-table-of-contents">back to top</a>)</p>
+<p align="right">(<a href="#-table-of-contents">back to top</a>)</p>
 <!-- SUPPORT -->
 
-## ⭐️ Show your support
+# ⭐️ Show your support
 
 If you like this project please give a star ⭐️ to this project
 
-<p align="right">(<a href="#📗-table-of-contents">back to top</a>)</p>
+<p align="right">(<a href="#-table-of-contents">back to top</a>)</p>
 
 <!-- ACKNOWLEDGEMENTS -->
 
-## 🙏 Acknowledgments <a name="acknowledgements"></a>
+# 🙏 Acknowledgments <a name="acknowledgements"></a>
 
 Thanks to WeseayDo for this amazing oportunity project.
 
 **the used APIs**
 [FakeStore API](https://fakestoreapi.com/).
 
-<p align="right">(<a href="#📗-table-of-contents">back to top</a>)</p>
+<p align="right">(<a href="#-table-of-contents">back to top</a>)</p>
 
-## 📝 License <a name="license"></a>
+# 📝 License <a name="license"></a>
 
 This project is [MIT](https://github.com/hananeoba/fakestore/blob/dev/LICENSE) licensed.
 
-<p align="right">(<a href="#📗-table-of-contents">back to top</a>)</p>
-
-
-
+<p align="right">(<a href="#-table-of-contents">back to top</a>)</p>

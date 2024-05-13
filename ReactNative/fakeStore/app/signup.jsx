@@ -77,6 +77,7 @@ const SignupForm = ({ navigation }) => {
                   borderWidth: 1,
                   marginRight: 6,
                   padding: 8,
+                  marginBottom: 6, 
                 },
               ]}
               onChangeText={handleChange("email")}
@@ -98,6 +99,7 @@ const SignupForm = ({ navigation }) => {
                   borderWidth: 1,
                   marginRight: 6,
                   padding: 8,
+                  marginBottom: 6, 
                 },
               ]}
               onChangeText={handleChange("username")}
@@ -119,6 +121,7 @@ const SignupForm = ({ navigation }) => {
                   borderWidth: 1,
                   marginBottom: 6,
                   padding: 8,
+                  marginBottom: 6, 
                 },
               ]}
               onChangeText={handleChange("password")}
@@ -134,7 +137,7 @@ const SignupForm = ({ navigation }) => {
             <Text style={GlobalStyle.text}>Name:</Text>
             <View style={{ flexDirection: "row", alignItems: "space-between" }}>
               <View
-                style={{ flexDirection: "column", alignItems: "space-between" }}
+                style={{ flexDirection: "column" }}
               >
                 <TextInput
                   style={[
@@ -146,6 +149,7 @@ const SignupForm = ({ navigation }) => {
                       borderWidth: 1,
                       marginRight: 6,
                       padding: 8,
+                      marginBottom: 6, 
                     },
                   ]}
                   onChangeText={handleChange("name.firstname")}
@@ -153,9 +157,14 @@ const SignupForm = ({ navigation }) => {
                   value={values.name.firstname}
                   placeholder="First name"
                 />
+                {(errors.name?.firstname || errors.name?.lastname) &&
+                  (touched.name?.firstname || touched.name?.lastname) && (
+                    <Text style={GlobalStyle.error}>
+                      {errors.name.firstname || errors.name.lastname}
+                    </Text>)}
               </View>
               <View
-                style={{ flexDirection: "column", alignItems: "space-between" }}
+                style={{ flexDirection: "column", }}
               >
                 <TextInput
                   style={[
@@ -166,6 +175,7 @@ const SignupForm = ({ navigation }) => {
                       borderColor: Orangecolor,
                       borderWidth: 1,
                       padding: 8,
+                      marginBottom: 6,  
                     },
                   ]}
                   onChangeText={handleChange("name.lastname")}
@@ -173,19 +183,18 @@ const SignupForm = ({ navigation }) => {
                   value={values.name.lastname}
                   placeholder="Last name"
                 />
-                {(errors.name?.firstname || errors.name?.lastname) &&
-                  (touched.name?.firstname || touched.name?.lastname) && (
+         {(errors.name?.lastname || errors.name?.lastname) &&
+                  (touched.name?.lastname || touched.name?.lastname) && (
                     <Text style={GlobalStyle.error}>
-                      {errors.name.firstname || errors.name.lastname}
-                    </Text>
-                  )}
+                      {errors.name.lastname || errors.name.lastname}
+                    </Text>)}
               </View>
             </View>
 
             <Text style={GlobalStyle.text}>Address:</Text>
             <View style={{ flexDirection: "row", alignItems: "space-between" }}>
               <View
-                style={{ flexDirection: "column", alignItems: "space-between" }}
+                style={{ flexDirection: "column",  }}
               >
                 <TextInput
                   style={[
@@ -197,6 +206,7 @@ const SignupForm = ({ navigation }) => {
                       borderWidth: 1,
                       marginRight: 6,
                       padding: 8,
+                      marginBottom: 6, 
                     },
                   ]}
                   onChangeText={handleChange("address.city")}
@@ -209,7 +219,7 @@ const SignupForm = ({ navigation }) => {
                 )}
               </View>
               <View
-                style={{ flexDirection: "column", alignItems: "space-between" }}
+                style={{ flexDirection: "column" }}
               >
                 <TextInput
                   style={[
@@ -220,6 +230,7 @@ const SignupForm = ({ navigation }) => {
                       borderColor: Orangecolor,
                       borderWidth: 1,
                       padding: 8,
+                      marginBottom: 6, 
                     },
                   ]}
                   onChangeText={handleChange("address.street")}
@@ -234,7 +245,7 @@ const SignupForm = ({ navigation }) => {
             </View>
             <View style={{ flexDirection: "row", alignItems: "space-between" }}>
               <View
-                style={{ flexDirection: "column", alignItems: "space-between" }}
+                style={{ flexDirection: "column" }}
               >
                 <TextInput
                   style={[
@@ -246,6 +257,7 @@ const SignupForm = ({ navigation }) => {
                       borderWidth: 1,
                       marginRight: 6,
                       padding: 8,
+                      marginBottom: 6, 
                     },
                   ]}
                   onChangeText={handleChange("address.number")}
@@ -259,7 +271,7 @@ const SignupForm = ({ navigation }) => {
                 )}
               </View>
               <View
-                style={{ flexDirection: "column", alignItems: "space-between" }}
+                style={{ flexDirection: "column", }}
               >
                 <TextInput
                   style={[
@@ -270,6 +282,7 @@ const SignupForm = ({ navigation }) => {
                       borderColor: Orangecolor,
                       borderWidth: 1,
                       padding: 8,
+                      marginBottom: 6, 
                     },
                   ]}
                   onChangeText={handleChange("address.zipcode")}
@@ -288,7 +301,7 @@ const SignupForm = ({ navigation }) => {
             <Text style={GlobalStyle.text}>Geolocation:</Text>
             <View style={{ flexDirection: "row", alignItems: "space-between" }}>
               <View
-                style={{ flexDirection: "column", alignItems: "space-between" }}
+                style={{ flexDirection: "column" }}
               >
                 <TextInput
                   style={[
@@ -300,6 +313,7 @@ const SignupForm = ({ navigation }) => {
                       borderWidth: 1,
                       marginRight: 6,
                       padding: 8,
+                      marginBottom: 6, 
                     },
                   ]}
                   onChangeText={handleChange("address.geolocation.lat")}
@@ -315,7 +329,7 @@ const SignupForm = ({ navigation }) => {
                   )}
               </View>
               <View
-                style={{ flexDirection: "column", alignItems: "space-between" }}
+                style={{ flexDirection: "column" }}
               >
                 <TextInput
                   style={[
@@ -326,6 +340,7 @@ const SignupForm = ({ navigation }) => {
                       borderColor: Orangecolor,
                       borderWidth: 1,
                       padding: 8,
+                      marginBottom: 6, 
                     },
                   ]}
                   onChangeText={handleChange("address.geolocation.long")}
@@ -351,6 +366,7 @@ const SignupForm = ({ navigation }) => {
                   borderWidth: 1,
                   marginRight: 6,
                   padding: 8,
+                  marginBottom: 6, 
                 },
               ]}
               onChangeText={handleChange("phone")}

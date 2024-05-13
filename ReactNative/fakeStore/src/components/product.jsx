@@ -59,23 +59,20 @@ const styles = StyleSheet.create({
   container2: {
     flex: 1,
     flexDirection: "row",
-    //flexWrap: "wrap",
     justifyContent: "space-between",
     paddingHorizontal: 10,
     marginTop: 10,
   },
   cardContainer: {
-    width: 140, // Adjust as needed
+    width: 140, 
     margin: 10,
     borderRadius: 20,
     overflow: "hidden",
-    //backgroundColor: "rgba(255,191,105,0.3)",
     borderColor: "rgb(0,0,1)",
     borderWidth: 1,
-    // Add a background color for better visibility
   },
   coverImage: {
-    height: 200, // Adjust as needed
+    height: 200,
     width: "75%",
     borderRadius: 20,
     resizeMode: "contain",

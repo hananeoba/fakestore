@@ -5,7 +5,6 @@ import SignUp from "./signup";
 import { AuthProvider } from "../src/context/authContext";
 import Nav from "./Nav";
 
-//const Drawer = createDrawerNavigator();
 const Layout = () => {
   return (
     

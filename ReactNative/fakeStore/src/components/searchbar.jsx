@@ -27,15 +27,14 @@ const styles = StyleSheet.create({
     backgroundColor: "#f0f0f0",
     borderRadius: 6,
     paddingHorizontal: 20,
-    marginHorizontal: 0,
+    marginHorizontal: 10,
     marginTop: 10,
-    flex: 1,
+    flex: 0.9,
   },
   searchIcon: {
     marginRight: 10,
   },
   searchInput: {
-    //flex: 1,
     paddingVertical: 10,
     fontSize: 16,
     color: "#333",

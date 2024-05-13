@@ -10,7 +10,6 @@ import {
 } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
 
-//import Stat
 import { useContext, useEffect, useState } from "react";
 
 import { AuthContext } from "../src/context/authContext";
@@ -119,18 +118,22 @@ const MainHome = ({ navigation }) => {
             <Pressable
               onPress={() => {
                 setAsc(asc === "asc" ? "desc" : "asc");
+                setCategoryId("");
                 fetchProduct(search, asc);
               }}
               style={[
-                styles.categoryItem,
-                asc === "desc" && styles.categoryItemSelected,
+                {
+                  backgroundColor: "#f0f0f0",
+                  borderRadius: 6,
+                  padding: 10,
+                },
               ]}
             >
-              <Icon
-                name="sort-amount-desc"
-                size={27}
-                color={'black'}
-              />
+              {asc === "asc" ? (
+                <Icon name="sort-asc" size={27} color={"black"} />
+              ) : (
+                <Icon name="sort-desc" size={27} color={"black"} />
+              )}
             </Pressable>
           </View>
           <View style={styles.categoryContainer}>
@@ -191,9 +194,6 @@ const MainHome = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   container: {
-    //display: "flex",
-    //flexDirection: "column",
-    //paddingTop: 34,
     flex: 1,
     justifyContent: "space-arround",
     alignItems: "space-arround",
@@ -240,14 +240,13 @@ const styles = StyleSheet.create({
     borderRadius: 5,
   },
   categoryItemSelected: {
-    backgroundColor: "rgb(255,191,105)", // Change to your desired highlight color
+    backgroundColor: "rgb(255,191,105)",
   },
   categoryText: {
     fontSize: 16,
   },
   productContainer: {
     flex: 1,
-    //backgroundColor: "#f0f0f0",
   },
 });
 

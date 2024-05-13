@@ -5,7 +5,6 @@ export default StyleSheet.create({
     height: 40,
     color: "#38434D",
     width: 311,
-    //paddingTop:10,
     marginBottom: 20,
     borderBottomWidth: 0.8,
     borderBottomColor: "dim-gray",
@@ -40,7 +39,8 @@ export default StyleSheet.create({
   error: {
     color: "red",
     fontSize: 14,
-    margin: 5,
+    marginBottom:5,
+    textAlign: "center",
   },
   container: {
     backgroundColor: "",
