@@ -4,8 +4,11 @@ import axios from "axios";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { PlusIcon } from "@heroicons/react/outline";
+import { useSession } from "next-auth/react";
+import { toast } from "react-toastify";
 
 const Products: React.FC = () => {
+  const { data: session } = useSession();
   const [products, setProducts] = useState<any[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [categories, setCategories] = useState<string[]>([]);
@@ -18,10 +21,13 @@ const Products: React.FC = () => {
     router.push(`/product/${productId}`);
   };
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchData = async (category = "", sortOrder) => {
       try {
+        setLoading(true);
         const response = await axios.get(
-          `https://fakestoreapi.com/products?sort=${sortOrder}`
+          category
+            ? `https://fakestoreapi.com/products/category/${category}+?sort=${sortOrder}`
+            : "https://fakestoreapi.com/products?sort=" + sortOrder
         );
         setProducts(response.data);
         setLoading(false);
@@ -44,13 +50,13 @@ const Products: React.FC = () => {
 
     fetchData();
     fetchCategories();
-  }, [sortOrder]);
+  }, []);
 
   const fetchProductsByCategory = async (category: string) => {
     try {
       setLoading(true);
       const response = await axios.get(
-        `https://fakestoreapi.com/products/category/${category}`
+        `https://fakestoreapi.com/products/category/${category}?sort=${sortOrder}`
       );
       setProducts(response.data);
       setLoading(false);
@@ -58,11 +64,6 @@ const Products: React.FC = () => {
       console.error("Error fetching products by category:", error);
       setLoading(false);
     }
-  };
-
-  const handleCategoryClick = (category: string) => {
-    setSelectedCategory(category);
-    fetchProductsByCategory(category);
   };
 
   const handleAllProductsClick = () => {
@@ -78,10 +79,14 @@ const Products: React.FC = () => {
     setProducts(filteredProducts);
   };
 
-  const fetchData = async () => {
+  const fetchData = async (category = "", sortOrder) => {
     try {
       setLoading(true);
-      const response = await axios.get("https://fakestoreapi.com/products");
+      const response = await axios.get(
+        category
+          ? `https://fakestoreapi.com/products/category/${category}?sort=${sortOrder}`
+          : "https://fakestoreapi.com/products?sort=" + sortOrder
+      );
       setProducts(response.data);
       setLoading(false);
     } catch (error) {
@@ -90,13 +95,26 @@ const Products: React.FC = () => {
     }
   };
   const handleAdd = () => {
-    router.push(`/product/add`);
+    if (session) {
+      router.push("/product/add");
+    } else {
+      toast.error("Please sign in to add a new product");
+      router.push("/login");
+    }
   };
 
-  const handleSortOrderToggle = (order: string) => {
-    const newSortOrder = sortOrder === "asc" ? "desc" : "asc";
-    setSortOrder(newSortOrder);
-    fetchData();
+  const handleCategoryClick = (category: string) => {
+    setSelectedCategory(category);
+    fetchData(category, sortOrder);
+  };
+
+  const handleSortOrderToggle = () => {
+    if (sortOrder === "asc") {
+      setSortOrder("desc");
+    } else {
+      setSortOrder("asc");
+    }
+    fetchData(selectedCategory, sortOrder);
   };
 
   return (
