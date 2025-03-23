@@ -54,16 +54,10 @@ This project was created with following technologies:
 
 **Pages**
 
-<image src= "https://i.imgur.com/fRbrOIl.jpg">
-<image src = "https://i.imgur.com/rvcYTRa.jpg">
-<image src = "https://i.imgur.com/q18Ye9M.jpg">
-
-**For LoggedIn Users**
-
-  <image src= "https://i.imgur.com/ut6VAax.jpg" >
-  <image src = "https://i.imgur.com/EFJeG5P.jpg">
-  <image src="https://i.imgur.com/V9td5Wv.jpg">
-  <image src = "https://i.imgur.com/1immb5S.jpg">
+<image src= "https://github.com/hananeoba/fakestore/blob/33d3749615ae55987b66a5ffd891b970940b0dfe/NextJs/screenshots/homePage.png">
+<image src = "https://github.com/hananeoba/fakestore/blob/33d3749615ae55987b66a5ffd891b970940b0dfe/NextJs/screenshots/login.png">
+<image src = "https://github.com/hananeoba/fakestore/blob/33d3749615ae55987b66a5ffd891b970940b0dfe/NextJs/screenshots/products.png">
+<image src = https://github.com/hananeoba/fakestore/blob/7f3ddd9882844ed0e180d187bc0327ef23041c5b/NextJs/screenshots/product_detail.png>
 
 ## 💻 Getting Started
 
