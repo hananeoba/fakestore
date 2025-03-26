@@ -54,8 +54,7 @@ This project was created with following technologies:
 
 **Pages**
 
-https://github.com/user-attachments/assets/7911f151-fde3-4c1a-ad26-26cf65e35efb
-
+https://github.com/user-attachments/assets/45c2a41e-6a29-40bb-aa0a-cd32f3255b78
 ## 💻 Getting Started
 
 To get a local copy up and running, follow these steps.
