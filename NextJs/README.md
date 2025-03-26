@@ -54,10 +54,7 @@ This project was created with following technologies:
 
 **Pages**
 
-<image src= "https://github.com/hananeoba/fakestore/blob/33d3749615ae55987b66a5ffd891b970940b0dfe/NextJs/screenshots/homePage.png">
-<image src = "https://github.com/hananeoba/fakestore/blob/33d3749615ae55987b66a5ffd891b970940b0dfe/NextJs/screenshots/login.png">
-<image src = "https://github.com/hananeoba/fakestore/blob/33d3749615ae55987b66a5ffd891b970940b0dfe/NextJs/screenshots/products.png">
-<image src = https://github.com/hananeoba/fakestore/blob/7f3ddd9882844ed0e180d187bc0327ef23041c5b/NextJs/screenshots/product_detail.png>
+https://github.com/user-attachments/assets/7911f151-fde3-4c1a-ad26-26cf65e35efb
 
 ## 💻 Getting Started
 
