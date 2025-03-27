@@ -101,6 +101,13 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+**User Credentials**
+
+To access restricted features, use the following test credentials:
+
+    Username: mor_2314
+    Password: 83r5^_
+    
 <p align="right">(<a href="#📗-table-of-contents">back to top</a>)</p>
 
 <!-- FUTURE FEATURES -->
